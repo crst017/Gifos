@@ -1,3 +1,9 @@
+.menu .burger-logo, .search .input-container .search-icon {
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -45,10 +51,7 @@ nav img {
 .menu .burger-logo {
   width: 1.5rem;
   height: 1.5rem;
-  display: inline-block;
   background-image: url("../assets/burger.svg");
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .menu input {
@@ -111,6 +114,16 @@ h1 span {
   color: #50E3C2;
 }
 
+h2 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+
 .search {
   padding-top: 32px;
   padding-bottom: 45px;
@@ -119,9 +132,81 @@ h1 span {
 .search img {
   width: 70%;
   max-width: 400px;
+  display: block;
+  margin: 0 auto;
 }
 
-.search input {
+.search .input-container {
   width: 88%;
+  height: 50px;
+  max-width: 550px;
+  border-radius: 25px;
+  padding-left: 55px;
+  padding-right: 20px;
+  margin: 0 auto;
+  border: solid 1px #572EE5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search .input-container input {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.9rem;
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  outline: none;
+}
+
+.search .input-container .search-icon {
+  width: 20px;
+  height: 20px;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  background-image: url("../assets/icon-search.svg");
+}
+
+.search h3 {
+  margin-top: 31px;
+  margin-bottom: 2px;
+}
+
+.search p {
+  font-size: 1.4rem;
+  line-height: 2.5rem;
+}
+
+.trending {
+  height: 43rem;
+  background-color: #F3F5F8;
+  padding-top: 46px;
+  padding-bottom: 82px;
+}
+
+.trending p {
+  margin-top: 7px;
+  margin-bottom: 32px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.3rem;
+  color: black;
+  display: block;
+}
+
+.trending p::after {
+  content: "\AGIFOS de nuestra comunidad.";
+  white-space: pre;
 }
 /*# sourceMappingURL=mobile.css.map */

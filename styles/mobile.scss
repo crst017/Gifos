@@ -1,8 +1,15 @@
 $purple: #572EE5;
 $purple-background: rgba(87,46,229,0.90);
 $green: #50E3C2;
+$trending-background: #F3F5F8;
 $montserrat: 'Montserrat', sans-serif;
 $roboto: 'Roboto', sans-serif;
+
+%bg-icons {
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 * {
     box-sizing: border-box;
@@ -39,10 +46,8 @@ nav {
     .burger-logo {
         width: 1.5rem;
         height: 1.5rem;
-        display: inline-block;
         background-image: url('../assets/burger.svg');
-        background-position: center;
-        background-repeat: no-repeat;
+        @extend %bg-icons;
     }
 
     input {
@@ -103,21 +108,93 @@ h1 {
     }
 }
 
+h2 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+}
 
 .search {
     padding-top: 32px;
     padding-bottom: 45px;
+
     img {
         width: 70%;
         max-width: 400px;
+        display: block;
+        margin: 0 auto;
     }
     
-    input {
+    .input-container {
         width: 88%;
-    }
-    // ::placeholder {
+        height: 50px;
+        max-width: 550px;
+        border-radius: 25px;
+        padding-left: 55px;
+        padding-right: 20px;
+        margin: 0 auto;
+        border: solid 1px $purple;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-    // }
+        input {
+            font-family: $roboto;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.9rem;
+            border: none;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            justify-self: right;
+            background-image: url('../assets/icon-search.svg');
+            @extend %bg-icons;
+        }
+    }
+
+    h3 {
+        margin-top: 31px;
+        margin-bottom: 2px;
+    }
+
+    p {
+        font-size: 1.4rem;
+        line-height: 2.5rem;
+    }
+}
+
+.trending {
+    height: 43rem;
+    background-color: $trending-background;
+    padding-top: 46px;
+    padding-bottom: 82px;
+
+    p { 
+        margin-top: 7px;
+        margin-bottom: 32px;
+        font-family: $roboto;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.3rem;
+        color: black;
+        display: block;
+        
+        &::after {
+            content: "\AGIFOS de nuestra comunidad.";
+            white-space: pre;
+        }
+    }
+
+    
 }
 
 
