@@ -192,9 +192,62 @@ h3 {
             content: "\AGIFOS de nuestra comunidad.";
             white-space: pre;
         }
+    }  
+}
+
+footer {
+    height: 196px;
+    padding-top: 47px;
+    padding-bottom: 28px;
+    border-bottom: solid 5px $purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p {
+        font-family: $roboto;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.8rem;
+        color: black;
     }
 
-    
+    .icons-container {
+        width: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        
+        span {
+            width: 2rem;
+            height: 2rem;
+            @extend %bg-icons; 
+        }
+
+        .fb {
+            background-image: url('../assets/icon_facebook.svg');
+            
+            &:hover {
+                background-image: url('../assets/icon_facebook_hover.svg');
+            }
+        }
+
+        .tw {
+            background-image: url('../assets/icon-twitter.svg');
+
+            &:hover {
+                background-image: url('../assets/icon-twitter-hover.svg');
+            }
+        }
+
+        .ig {
+            background-image: url('../assets/icon_instagram.svg');
+
+            &:hover {
+                background-image: url('../assets/icon_instagram-hover.svg');
+            }
+        }
+    }
 }
 
 

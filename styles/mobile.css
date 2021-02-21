@@ -1,4 +1,4 @@
-.menu .burger-logo, .search .input-container .search-icon {
+.menu .burger-logo, .search .input-container .search-icon, footer .icons-container span {
   display: inline-block;
   background-position: center;
   background-repeat: no-repeat;
@@ -208,5 +208,70 @@ h3 {
 .trending p::after {
   content: "\AGIFOS de nuestra comunidad.";
   white-space: pre;
+}
+
+footer {
+  height: 196px;
+  padding-top: 47px;
+  padding-bottom: 28px;
+  border-bottom: solid 5px #572EE5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  color: black;
+}
+
+footer .icons-container {
+  width: 30%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer .icons-container span {
+  width: 2rem;
+  height: 2rem;
+}
+
+footer .icons-container .fb {
+  background-image: url("../assets/icon_facebook.svg");
+}
+
+footer .icons-container .fb:hover {
+  background-image: url("../assets/icon_facebook_hover.svg");
+}
+
+footer .icons-container .tw {
+  background-image: url("../assets/icon-twitter.svg");
+}
+
+footer .icons-container .tw:hover {
+  background-image: url("../assets/icon-twitter-hover.svg");
+}
+
+footer .icons-container .ig {
+  background-image: url("../assets/icon_instagram.svg");
+}
+
+footer .icons-container .ig:hover {
+  background-image: url("../assets/icon_instagram-hover.svg");
 }
 /*# sourceMappingURL=mobile.css.map */
