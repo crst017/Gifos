@@ -1,1 +1,127 @@
-/* No CSS *//*# sourceMappingURL=mobile.css.map */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  color: #572EE5;
+  font-size: 62.5%;
+  text-align: center;
+}
+
+nav {
+  height: 10rem;
+  padding: 0 6.9%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 5px solid #572EE5;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav img {
+  height: 4.9rem;
+  width: 5.6rem;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menu .burger-logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  background-image: url("../assets/burger.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu input {
+  width: 2.4rem;
+  height: 2.4rem;
+  -webkit-transform: translate(1.9rem, -0.45rem);
+          transform: translate(1.9rem, -0.45rem);
+  opacity: 0;
+  z-index: 1;
+}
+
+.menu input:checked ~ ul {
+  max-height: 100vh;
+}
+
+.menu ul {
+  background-color: rgba(87, 46, 229, 0.9);
+  width: 100%;
+  max-height: 0rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  list-style: none;
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: max-height 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 1;
+}
+
+.menu ul li {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.menu ul li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 40px;
+  border-bottom: 1px solid white;
+}
+
+h1 {
+  font-size: 2.5rem;
+  width: 76%;
+  margin: 0 auto;
+}
+
+h1 span {
+  color: #50E3C2;
+}
+
+.search {
+  padding-top: 32px;
+  padding-bottom: 45px;
+}
+
+.search img {
+  width: 70%;
+  max-width: 400px;
+}
+
+.search input {
+  width: 88%;
+}
+/*# sourceMappingURL=mobile.css.map */
