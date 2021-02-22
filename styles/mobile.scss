@@ -60,6 +60,10 @@ nav {
         &:checked ~ ul {
             max-height: 100vh;
         }
+
+        &:checked ~ .burger-logo {
+            background-image: url('../assets/close.svg');
+        }
     }
 
     ul {
@@ -169,6 +173,9 @@ h3 {
     p {
         font-size: 1.4rem;
         line-height: 2.5rem;
+        width: 60%;
+        min-width: 22.5rem;
+        margin: 0 auto;
     }
 }
 
@@ -192,7 +199,23 @@ h3 {
             content: "\AGIFOS de nuestra comunidad.";
             white-space: pre;
         }
-    }  
+    }
+    
+    .trending-gifs-container {
+        display: flex;
+        overflow-x: scroll;
+        // margin: 0 10%;
+        // overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+
+        img {
+            width: 65%;
+            min-width: 250px;
+            height: 187px;
+            padding: 0 11px;
+            // scroll-snap-align: center;
+        }
+    }
 }
 
 footer {
