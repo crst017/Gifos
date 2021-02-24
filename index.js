@@ -6,10 +6,12 @@ let url = "https://api.giphy.com/v1";
 let api_key = "tuLKngOFWAfJbQBfXEDFpS0Qnr9ndXcH";
 
 let urlTrendingTerms = `${url}/trending/searches?api_key=${api_key}`;
-let urlTrendingGifs = `${url}/gifs/trending?api_key=${api_key}&limit=3`
+let urlTrendingGifs = `${url}/gifs/trending?api_key=${api_key}&limit=3`;
+let urlAutocomplete = "";
 
 const pTrends = document.querySelector(".trends");
 const imgTrends = document.querySelectorAll(".trending-gif");
+const input = document.querySelector(".input-search");
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1)
@@ -37,9 +39,20 @@ async function fetchTrendingGifs() {
 
     for (const gif of gifs) {
         src.push(gif.images.original.webp);
-    }
-    
+    }  
     return src;
+}
+
+async function fetchAutocomplete(url) {
+
+    const promiseAutocomplete = await fetch(url);
+    const jsonAutocomplete = await promiseAutocomplete.json();
+    const suggestions = jsonAutocomplete.data;
+    let name = [];
+    for (const suggestion of suggestions) {
+        name.push(suggestion.name)
+    }
+    return name;
 }
 
 (async function () { 
@@ -53,4 +66,22 @@ async function fetchTrendingGifs() {
     }
 
 })();
+
+input.addEventListener("input", () => {
+    let q = input.value;
+    urlAutocomplete = `${url}/gifs/search/tags?api_key=${api_key}&q=${q}&limit=4`;
+
+    fetchAutocomplete(urlAutocomplete).then( result => {
+        console.log(result)
+
+        // Crear una lista desordenada y añadirla como hijo del input
+
+        // Calcular la longitud del resultado
+        // Dentro de un ciclo crear la cantidad de list items que devuelve el resultado
+        // Asignar al list item el valor deseado ( resultado de autocompletar )
+        // Colocar en negrilla las letras que coinciden con el valor del input
+        // Hacer append del list item al listado UL
+    }
+    );
+});
 
