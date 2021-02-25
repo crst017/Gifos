@@ -7,7 +7,8 @@
     <title>Gifos</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/mobile.css" media="(max-width: 1445px)">  
+    <link rel="stylesheet" href="./styles/mobile.css" media="(max-width: 1445px)"> 
+    <!-- <link rel="stylesheet" href="./styles/dynamic.css">  -->
 </head>
 <body>
     <header>
@@ -31,12 +32,21 @@
     <main>
         <section class="search">
             <img src="./assets/ilustra_header.svg" alt="Ilustracion header">
-            <div class="input-container">
-                <input type="text" placeholder="Busca GIFOS y más" class="input-search">
-                <span class="search-icon"></span>
+            <div class="search-container">
+                <div class="input-container">
+                    <input type="text" placeholder="Busca GIFOS y más" class="input-search">
+                    <button class="search-button"></button>
+                    <span class="autocomplete-divisor"></span>
+                </div>
+                <ul class="ul-autocomplete"></ul>
             </div>
             <h3>Trending:</h3>
             <p class="trends">Fetch to API with trends</p>
+            <section class="results">
+                <span class="results-divisor"></span>
+                <h2 class="searched-term">Searched term</h2>
+                <div class="gifs-result-container"></div>
+            </section>
         </section>
         <section class="trending">
             <h2>Trending GIFOS</h2>
