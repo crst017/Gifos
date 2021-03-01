@@ -7,6 +7,7 @@
     <title>Gifos</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/mobile.css" media="(max-width: 1445px)"> 
     <!-- <link rel="stylesheet" href="./styles/dynamic.css">  -->
 </head>
@@ -41,11 +42,26 @@
                 <ul class="ul-autocomplete"></ul>
             </div>
             <h3>Trending:</h3>
-            <p class="trends">Fetch to API with trends</p>
+            <p class="trends">
+                <span class="trend-suggestion">Fetch</span>
+                <span class="trend-suggestion">to</span>
+                <span class="trend-suggestion">API</span>
+                <span class="trend-suggestion">with</span>
+                <span class="trend-suggestion">trends</span>
+            </p>
             <section class="results">
                 <span class="results-divisor"></span>
                 <h2 class="searched-term">Searched term</h2>
                 <div class="gifs-result-container"></div>
+                <ul class="pagination">
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                </ul>
             </section>
         </section>
         <section class="trending">
@@ -67,6 +83,8 @@
         </div>
         <p class="copyright">&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
-    <script src="./index.js"></script>
+    <script src="./js/fetch.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/pagination.js"></script>
 </body>
 </html>

@@ -144,8 +144,8 @@ h3 {
 
 .search {
     padding-top: 32px;
-    padding-bottom: 45px;
     height: auto;
+
     img {
         width: 70%;
         max-width: 400px;
@@ -164,7 +164,6 @@ h3 {
     }
 
     .input-container {
-        
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -221,13 +220,14 @@ h3 {
         list-style: none;
         text-align: left;
 
-        li {
+        .li-autocomplete {
             font-family: $roboto;
             font-size: 1.6rem;
             font-weight: 400;
             line-height: 1.9rem;
             color: $gray;
             padding: 5px 35px;
+            cursor: pointer;
 
             &:nth-child(1) {
                 padding-top: 14px
@@ -251,25 +251,30 @@ h3 {
         min-width: 25rem;
         margin: 0 auto;
         margin-bottom: 35px;
+
+        span {
+            cursor: pointer;
+        }
+    }   
+}
+
+.results{  
+    padding-top: 42px;
+    position: relative;
+    display: none;
+
+    h2 {
+        padding-bottom: 38px;
     }
 
-    .results{  
-        padding-top: 42px;
-        position: relative;
-
-        h2 {
-            padding-bottom: 38px;
-        }
-
-        .results-divisor {
-            position: absolute;
-            left: 50%;
-            top: 1px;
-            transform: translateX(-50%);
-            width: 40%;
-            border-bottom: 1px solid $gray;
-            opacity: 0.5;
-        }
+    .results-divisor {
+        position: absolute;
+        left: 50%;
+        top: 1px;
+        transform: translateX(-50%);
+        width: 40%;
+        border-bottom: 1px solid $gray;
+        opacity: 0.5;
     }
 
     .gifs-result-container {
@@ -284,6 +289,57 @@ h3 {
             height: 120px;
         }
     }
+}
+.d-inline-block {
+    display: inline-block;
+}
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    max-width: 340px;
+    margin: 25px auto ;
+    justify-content: space-between;
+    list-style: none;
+    
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-style: $roboto;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: $gray;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .li-selected, li:hover {
+        background-color: $purple;
+        color: white;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 3.2rem;
+        cursor: pointer;
+        
+        .fas {
+            color: gray;
+            font-size: 1.4rem;
+        }
+    
+        .fas:hover {
+            color: $purple
+        }
+    }  
 }
 
 .trending {
