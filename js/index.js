@@ -136,7 +136,8 @@ function graphResults (result){
     for (const src of result) {
         let img = document.createElement("img");
         img.src = src;
-        gifsResultContainer.appendChild(img)
+        gifsResultContainer.appendChild(img);
+        favListener(img)
     }
 }
 
@@ -149,5 +150,23 @@ function replaceResults (result) {
     }
 }
 
+function favListener(element) {
+    element.addEventListener("click", (e) => {displayFav(e)});
+}
 
+for (const img of imgTrends) {
+    img.addEventListener("click", (e) => {displayFav(e)})
+}
 
+function displayFav (event) {
+    let selected = document.querySelector(".selected");
+    let scroll = window.scrollY;
+    selected.style.top = `${scroll}px` 
+    window.scrollTo(0,scroll)
+
+    let imgSelected = document.querySelector(".selected img")
+    imgSelected.src = event.target.src;
+    
+    selected.classList.add("display-selected"); 
+    document.body.classList.add("display-selected"); 
+}

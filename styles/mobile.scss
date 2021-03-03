@@ -3,6 +3,7 @@ $purple-background: rgba(87,46,229,0.90);
 $green: #50E3C2;
 $gray: #9CAFC3;
 $trending-background: #F3F5F8;
+$fav-background: rgba(255,255,255,0.90);
 
 $montserrat: 'Montserrat', sans-serif;
 $roboto: 'Roboto', sans-serif;
@@ -13,10 +14,25 @@ $roboto: 'Roboto', sans-serif;
     background-repeat: no-repeat;
 }
 
+%bg-button {
+    width: 25px;
+    height: 25px;
+    justify-self: right;
+    border: none;
+    outline: none;
+    background-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    position: relative;
 }
 
 html {
@@ -25,7 +41,10 @@ html {
     font-size: 62.5%;
     text-align: center;
 }
-   
+
+img {
+    cursor: pointer;
+}
 nav {
     height: 10rem;
     padding: 0 6.9%;
@@ -180,19 +199,13 @@ h3 {
             flex-grow: 1;
             outline: none;
         }
-
+        
         .search-button {
-            width: 25px;
-            height: 25px;
-            justify-self: right;
-            border: none;
-            outline: none;
-            background-size: 20px;
-            background-color: transparent;
-            cursor: pointer;
+            @extend %bg-button;
             background-image: url('../assets/icon-search.svg');
             @extend %bg-icons;
         }
+
 
         .search-button-close {
             background-size: 15px;
@@ -209,9 +222,9 @@ h3 {
             border-bottom: 1px solid $gray;
         }
 
-        .d-inline-block {
-            display: inline-block;
-        }
+        // .d-inline-block {
+        //     display: inline-block;
+        // }
     }
 
     .ul-autocomplete {
@@ -435,6 +448,75 @@ footer {
         }
     }
 }
+
+.selected {
+    display: none;
+    position: absolute;
+    left: 0px;
+    background-color: $fav-background;
+    // background: transparent;
+    // opacity: 0.8;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    overflow-y: hidden;
+
+    .close-selected {
+        @extend %bg-button;
+        @extend %bg-icons;
+        background-size: 15px;
+        background-image: url('../assets/close.svg');
+        position: absolute;
+        top: 60px;
+        right: 12%;
+    }
+
+    img {
+        margin-top: 150px;
+        width: 80%;
+        height: 245px;
+        max-width: 320px;
+    }
+
+    .options {
+        width: 80%;
+        max-width: 320px;
+        margin: 14px auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+
+        p:nth-child(1) {
+            font-family: $roboto;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.8rem;
+            color: black;
+            margin-bottom: 6px;
+        }
+
+        p:nth-child(2) {
+            font-family: $montserrat;
+            font-size: 1.6rem;
+            font-weight: 900;
+            line-height: 1.9rem;
+            color: black;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+.display-selected {
+    overflow: hidden;
+    display: block;
+}
+
+
 
 
 
