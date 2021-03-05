@@ -1,10 +1,10 @@
-.menu .burger-logo, .search .input-container .search-button, footer .icons-container span, .selected .close-selected {
+.menu .burger-logo, .search .input-container .search-button, footer .icons-container span, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
   display: inline-block;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.search .input-container .search-button, .selected .close-selected {
+.search .input-container .search-button, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
   width: 25px;
   height: 25px;
   -ms-grid-column-align: right;
@@ -356,6 +356,11 @@ h3 {
   cursor: pointer;
 }
 
+.pagination li:active {
+  background-color: white;
+  color: #9CAFC3;
+}
+
 .pagination .li-selected, .pagination li:hover {
   background-color: #572EE5;
   color: white;
@@ -553,6 +558,36 @@ footer .icons-container .ig:hover {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.selected .buttons .fav-button, .selected .buttons .download-button {
+  width: 36px;
+  height: 36px;
+  background-size: 100%;
+}
+
+.selected .buttons .fav-button {
+  background-image: url("../assets/icon-fav.svg");
+  margin-right: 22px;
+}
+
+.selected .buttons .fav-button:hover {
+  background-image: url("../assets/icon-fav-hover.svg");
+}
+
+.selected .buttons .fav-button:active {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+}
+
+.selected .buttons .download-button {
+  background-image: url("../assets/icon-download.svg");
+  border-radius: 6px;
+  border: 1px solid #9CAFC3;
+}
+
+.selected .buttons .download-button:hover {
+  background-image: url("../assets/icon-download-hover.svg");
 }
 
 .display-selected {

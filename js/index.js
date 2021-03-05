@@ -158,8 +158,8 @@ for (const img of imgTrends) {
     img.addEventListener("click", (e) => {displayFav(e)})
 }
 
+const selected = document.querySelector(".selected");
 function displayFav (event) {
-    let selected = document.querySelector(".selected");
     let scroll = window.scrollY;
     selected.style.top = `${scroll}px` 
     window.scrollTo(0,scroll)
@@ -170,3 +170,9 @@ function displayFav (event) {
     selected.classList.add("display-selected"); 
     document.body.classList.add("display-selected"); 
 }
+
+const closeSelected = document.querySelector(".close-selected");
+closeSelected.addEventListener("click", () => {
+    selected.classList.remove("display-selected");
+    document.body.classList.remove("display-selected");
+})

@@ -13,9 +13,9 @@ paginationPrev.addEventListener ("click" , (e) => {
     
     let pageNumber = 0;
     for (const item of itemsPagination) {   
-        if (item.classList != 0)  pageNumber = item.textContent;
+        if (item.classList != 0)  pageNumber = item.textContent; // assigns the page number selected
     }
-    if (pageNumber != 1) offset = pagination(pageNumber - 1);
+    if (pageNumber != 1) offset = pagination(pageNumber - 1); // 
     search(e);
 });
 
@@ -23,8 +23,10 @@ paginationNext.addEventListener ("click" , (e) => {
  
     let pageNumber = 0;
     for (const item of itemsPagination) {   
-        if (item.classList != 0)  pageNumber = item.textContent;
-    }
+        console.log(item.classList)
+        if (item.classList != 0)  {
+            pageNumber = item.textContent;
+    }}
     if (pageNumber != pages) offset = pagination(Number(pageNumber) + Number(1));
     search(e);
 });
@@ -54,15 +56,17 @@ function pagination(pageNumber) {
         default:
             setNumeration( pageNumber - 2);
             itemsPagination[2].classList.add("li-selected");
+            // removeSelected();
             break;
     }
     offset = (pageNumber - 1) * 12;
     return offset
 }        
 
+// Assigns the numbers for the correct numeration
 function setNumeration( firstNumber ){
     for (let index = 0; index < itemsPagination.length; index++){
-        itemsPagination[index].classList.remove("li-selected"); // Clear background color  
+        itemsPagination[index].classList.remove("li-selected"); // Clear background color "selection"
         itemsPagination[index].textContent = index + firstNumber ;
     }
 }

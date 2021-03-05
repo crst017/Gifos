@@ -329,6 +329,11 @@ h3 {
         height: 3.2rem;
         border-radius: 50%;
         cursor: pointer;
+
+        &:active {
+            background-color: white;
+            color: $gray;
+        }
     }
 
     .li-selected, li:hover {
@@ -454,8 +459,6 @@ footer {
     position: absolute;
     left: 0px;
     background-color: $fav-background;
-    // background: transparent;
-    // opacity: 0.8;
     height: 100vh;
     width: 100%;
     z-index: 1;
@@ -508,12 +511,44 @@ footer {
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        .fav-button, .download-button {
+            @extend %bg-button;
+            @extend %bg-icons;
+            width: 36px;
+            height: 36px;
+            background-size: 100%;
+        }
+
+        .fav-button {
+            background-image: url("../assets/icon-fav.svg");
+            margin-right: 22px;
+
+            &:hover {
+                background-image: url("../assets/icon-fav-hover.svg");
+            }
+
+            &:active {
+                background-image: url("../assets/icon-fav-active.svg");
+                background-size: 20px;
+            }
+        }
+
+        .download-button {
+            background-image: url("../assets/icon-download.svg");
+            border-radius: 6px;
+            border: 1px solid $gray;
+
+            &:hover {
+                background-image: url("../assets/icon-download-hover.svg");
+            }
+        }
     }
 }
 
 .display-selected {
-    overflow: hidden;
-    display: block;
+    overflow: hidden;   // to block the scroll
+    display: block;     // to show the container with the selected gif
 }
 
 
