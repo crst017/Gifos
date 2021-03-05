@@ -356,12 +356,7 @@ h3 {
   cursor: pointer;
 }
 
-.pagination li:active {
-  background-color: white;
-  color: #9CAFC3;
-}
-
-.pagination .li-selected, .pagination li:hover {
+.pagination .li-selected {
   background-color: #572EE5;
   color: white;
 }
@@ -498,7 +493,7 @@ footer .icons-container .ig:hover {
   display: none;
   position: absolute;
   left: 0px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: white;
   height: 100vh;
   width: 100%;
   z-index: 1;
