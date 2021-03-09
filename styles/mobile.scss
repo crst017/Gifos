@@ -480,7 +480,7 @@ footer {
         max-width: 320px;
         margin: 14px auto;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         text-align: left;
 
         p:nth-child(1) {
@@ -521,9 +521,20 @@ footer {
 
             &:hover {
                 background-image: url("../assets/icon-fav-hover.svg");
+                background-size: 100%;
             }
 
             &:active {
+                background-image: url("../assets/icon-fav-active.svg");
+                background-size: 20px;
+            }
+        }
+
+        .fav-button-selected {
+            background-image: url("../assets/icon-fav-active.svg");
+            background-size: 20px;
+
+            &:hover {
                 background-image: url("../assets/icon-fav-active.svg");
                 background-size: 20px;
             }

@@ -19,14 +19,13 @@ paginationPrev.addEventListener ("click" , (e) => {
     search(e);
 });
 
-paginationNext.addEventListener ("click" , (e) => { 
- 
+paginationNext.addEventListener ("click" , (e) => {
     let pageNumber = 0;
     for (const item of itemsPagination) {   
-        console.log(item.classList)
         if (item.classList != 0)  {
             pageNumber = item.textContent;
-    }}
+        }
+    }
     if (pageNumber != pages) offset = pagination(Number(pageNumber) + Number(1));
     search(e);
 });
