@@ -1,17 +1,25 @@
 let url = "https://api.giphy.com/v1";
 let api_key = "tuLKngOFWAfJbQBfXEDFpS0Qnr9ndXcH";
 
-let urlTrendingTerms = `${url}/trending/searches?api_key=${api_key}`;
-let urlTrendingGifs = `${url}/gifs/trending?api_key=${api_key}&limit=3`;
-let urlAutocomplete = "";
-let urlSearch = "";
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1)
+}
+
+class Gif {  
+    constructor( title, username, src) {
+      this.title = title;
+      this.username = username;
+      this.src = src;
+      this.status = false;
+    }
+}
 
 async function fetchTrendingTerms() {
-    
+
+    const urlTrendingTerms = `${url}/trending/searches?api_key=${api_key}`;
     const promiseTrendingTerms = await fetch(urlTrendingTerms);
     const jsonTrendingTerms = await promiseTrendingTerms.json();
     let trends = jsonTrendingTerms.data.slice(0,5);
-
     for (let i = 0; i < trends.length ; i++) {
 
         if (i != 4) {
@@ -22,19 +30,6 @@ async function fetchTrendingTerms() {
         }
     }
     return trends;
-}
-
-async function fetchTrendingGifs() {
-
-    const promiseTrendingGifs = await fetch(urlTrendingGifs);
-    const jsonTrendingGifs = await promiseTrendingGifs.json();
-    const gifs = jsonTrendingGifs.data;
-    let src = [];
-
-    for (const gif of gifs) {
-        src.push(gif.images.original.webp);
-    }  
-    return src;
 }
 
 async function fetchAutocomplete(url) {
@@ -49,18 +44,34 @@ async function fetchAutocomplete(url) {
     return name;
 }
 
+async function fetchTrendingGifs() {
+
+    const urlTrendingGifs = `${url}/gifs/trending?api_key=${api_key}&limit=3`;
+    return gifArray( urlTrendingGifs );
+}
+
 async function fetchSearch(input,offset) {
 
-    urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input}&limit=12&offset=${offset}`;
-    const promiseSearch = await fetch(urlSearch);
-    const jsonSearch = await promiseSearch.json();
-    const gifs = jsonSearch.data;
-    let src = [];
+    let urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input}&limit=12&offset=${offset}`;
+    return gifArray( urlSearch ) 
+}
 
+async function gifArray ( url ) {
+
+    const promise = await fetch( url );
+    const json = await promise.json();
+    const gifs = json.data;
+    let gifArray = [];
+    let pages = Math.ceil(json.pagination.total_count/12);
+    
     for (const gif of gifs) {
-        src.push(gif.images.original.webp);
+        
+        let title = gif.title ? gif.title.capitalize().split(" GIF",1)[0] : input;
+        let username = gif.user && gif.user.display_name ? gif.user.display_name :
+                                            gif.username ? gif.username          : "No Username";
+        let newGif = new Gif ( title , username , gif.images.original.webp , )
+        gifArray.push(newGif);
     }
-    pages = Math.ceil(jsonSearch.pagination.total_count/12);
-    // console.log(pages,jsonSearch.pagination.total_count);
-    return [src, pages];
+
+    return { "gifArray" : gifArray , "pages" : pages}  
 }

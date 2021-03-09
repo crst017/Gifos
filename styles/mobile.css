@@ -521,8 +521,8 @@ footer .icons-container .ig:hover {
   margin: 14px auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
   text-align: left;
 }
 
@@ -568,9 +568,20 @@ footer .icons-container .ig:hover {
 
 .selected .buttons .fav-button:hover {
   background-image: url("../assets/icon-fav-hover.svg");
+  background-size: 100%;
 }
 
 .selected .buttons .fav-button:active {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+}
+
+.selected .buttons .fav-button-selected {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+}
+
+.selected .buttons .fav-button-selected:hover {
   background-image: url("../assets/icon-fav-active.svg");
   background-size: 20px;
 }
