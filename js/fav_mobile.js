@@ -35,8 +35,6 @@ function displayFav (event) {
     username.textContent = event.target.gif.username;
     
     favButton.classList.remove("fav-button-selected");
-    // let gifTitle = event.target.gif.title;
-    // let gifURL = event.target.gif.src;
     let gifID = event.target.gif.id;
 
     // Looks if the selected gif is in the localStorage, returns a true or a false
@@ -56,21 +54,21 @@ function gifInLocalStorage( gifID ) {
 
             let key = localStorage.key(index);
             let value = localStorage.getItem(key);
-            statusStorage = JSON.parse(value).status;
+            statusStorage = true;
             favButton.classList.add("fav-button-selected");
         }
     }
     return statusStorage;
 }
 
-function changeGifStatus ( event ) {
+function changeGifStatus () {
     
     statusGif = !statusGif;
     gifSelected.status = statusGif;
     let key = gifSelected.id;
-    let value = JSON.stringify(gifSelected);
 
     if (statusGif) {
+        let value = JSON.stringify(gifSelected);
         localStorage.setItem( key , value );
         favButton.classList.add("fav-button-selected");
     } else {

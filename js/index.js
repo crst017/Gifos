@@ -141,11 +141,12 @@ function graphResults (result){
 }
 
 function replaceResults (result) {
-
-    let resultImages = document.querySelectorAll(".gifs-result-container img");       
+    console.log(result);
+    let resultImages = document.querySelectorAll(".gifs-result-container img");
+    console.log(resultImages)
     for (let index = 0; index < result.length; index++) {
         resultImages[index].src = result[index].src;
-        resultImages[index].gif = gif;
+        resultImages[index].gif = result[index];
     }
 }
 
