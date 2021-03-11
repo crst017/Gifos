@@ -6,9 +6,10 @@ String.prototype.capitalize = function() {
 }
 
 class Gif {  
-    constructor( title, username, src) {
+    constructor( title, username, id, src) {
       this.title = title;
       this.username = username;
+      this.id = id;
       this.src = src;
       this.status = false;
     }
@@ -47,16 +48,17 @@ async function fetchAutocomplete(url) {
 async function fetchTrendingGifs() {
 
     const urlTrendingGifs = `${url}/gifs/trending?api_key=${api_key}&limit=3`;
-    return gifArray( urlTrendingGifs );
+    return gifArray( urlTrendingGifs , "Trend" );
 }
 
 async function fetchSearch(input,offset) {
 
-    let urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input}&limit=12&offset=${offset}`;
-    return gifArray( urlSearch ) 
+    const urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input}&limit=12&offset=${offset}`;
+    return gifArray( urlSearch , input ) 
 }
 
-async function gifArray ( url ) {
+// Returns an array of Gif Objects and the # of result pages from the requested URL (The URL itself indicates the length of the response)
+async function gifArray ( url , input ) {
 
     const promise = await fetch( url );
     const json = await promise.json();
@@ -69,7 +71,9 @@ async function gifArray ( url ) {
         let title = gif.title ? gif.title.capitalize().split(" GIF",1)[0] : input;
         let username = gif.user && gif.user.display_name ? gif.user.display_name :
                                             gif.username ? gif.username          : "No Username";
-        let newGif = new Gif ( title , username , gif.images.original.webp , )
+        let id = gif.id;
+        let src = gif.images.original.webp;
+        let newGif = new Gif ( title , username , id , src )
         gifArray.push(newGif);
     }
 

@@ -9,7 +9,6 @@ const searchButton = document.querySelector(".search-button");
 const gifsResultContainer = document.querySelector(".gifs-result-container");
 const sectionResults = document.querySelector(".results");
 
-// replace(/['"]+/g, '')
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.lastChild);
@@ -113,7 +112,6 @@ function search(e) {
             resetSearch();
             break;
     }
-    // console.log(pages)
 }
 
 function resetSearch () {
@@ -144,98 +142,11 @@ function graphResults (result){
 
 function replaceResults (result) {
 
-    let resultImages = document.querySelectorAll(".gifs-result-container img");     
-    
+    let resultImages = document.querySelectorAll(".gifs-result-container img");       
     for (let index = 0; index < result.length; index++) {
         resultImages[index].src = result[index].src;
         resultImages[index].gif = gif;
     }
 }
 
-// Event to display "full screen" gif if any image on the result section is selected
-function favListener(element) {
-    element.addEventListener("click", (e) => {displayFav(e)});
-}
 
-// Adding event to display full screen gif if the image is selected
-for (const img of imgTrends) {
-    img.addEventListener("click", (e) => {displayFav(e)})
-}
-
-
-// Displays the favorite window
-const selected = document.querySelector(".selected");
-const favButton = document.querySelector(".fav-button");
-
-
-function displayFav (event) {
-
-    let scroll = window.scrollY;
-    selected.style.top = `${scroll}px`; 
-    window.scrollTo(0,scroll);
-
-    // Assign the GIF object properties to the HTML tag object, text content attribute
-    let imgSelected = document.querySelector(".selected img");
-    let username = document.querySelector(".username");
-    let title = document.querySelector(".title");
-    
-    imgSelected.src = event.target.src;
-    title.textContent = event.target.gif.title;
-    username.textContent = event.target.gif.username;
-    
-    // Add the event to save the GIF object in the local storage 
-    favButton.classList.remove("fav-button-selected");
-    let gifTitle = event.target.gif.title
-    let statusStorage = false;
-
-    for (let index = 0; index < localStorage.length; index++) {
-        
-        if ( gifTitle == localStorage.key(index) ){
-            favButton.classList.add("fav-button-selected");
-            key = localStorage.key(index);
-            value = localStorage.getItem(key);
-            statusStorage = JSON.parse(value).status
-        }
-    }
-    let statusGif = statusStorage;
-    // let key = event.target.gif.name
-    favButton.addEventListener("click" , () => {
-        
-
-        statusGif = !statusGif
-        event.target.gif.status = statusGif;
-
-        let key = event.target.gif.title;
-        let value = JSON.stringify(event.target.gif);
-
-        if (statusGif) {
-            localStorage.setItem( key , value );
-            favButton.classList.add("fav-button-selected");
-        } else {
-            localStorage.removeItem( key );
-            favButton.classList.remove("fav-button-selected");
-        }
-
-
-    })
-
-    selected.classList.add("display-selected"); 
-    document.body.classList.add("display-selected"); 
-}
-
-// Closes the favorite window
-const closeSelected = document.querySelector(".close-selected");
-
-closeSelected.addEventListener("click", () => {
-    // favButton.removeEventListener("click" , favorites )
-    selected.classList.remove("display-selected");
-    document.body.classList.remove("display-selected");
-})
-
-
-// function favorites ( gifObject ) {
-
-//     console.log("aqui toy")
-//     // gifObject.status = !gifObject.status;
-//     // console.log(gifObject);
-// }
