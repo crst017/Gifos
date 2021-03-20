@@ -6,11 +6,12 @@ String.prototype.capitalize = function() {
 }
 
 class Gif {  
-    constructor( title, username, id, src) {
+    constructor( title, username, id, src, downloadSrc) {
       this.title = title;
       this.username = username;
       this.id = id;
       this.src = src;
+      this.downloadSrc = downloadSrc;
       this.status = false;
     }
 }
@@ -72,8 +73,9 @@ async function gifArray ( url , input ) {
         let username = gif.user && gif.user.display_name ? gif.user.display_name :
                                             gif.username ? gif.username          : "No Username";
         let id = gif.id;
-        let src = gif.images.original.url;
-        let newGif = new Gif ( title , username , id , src )
+        let src = gif.images.original.webp;
+        let downloadSrc = gif.images.original.url;
+        let newGif = new Gif ( title , username , id , src , downloadSrc)
         gifArray.push(newGif);
     }
 

@@ -92,7 +92,7 @@ closeSelected.addEventListener("click", () => {
 async function configureDownload( gifObject ) {
 
     const downloadButton = document.querySelector(".download-button");
-    const gifFetch = await fetch( gifObject.src );
+    const gifFetch = await fetch( gifObject.downloadSrc );
     const file = await gifFetch.blob();
 
     downloadButton.download = `${gifObject.title}_${gifObject.id}`;
