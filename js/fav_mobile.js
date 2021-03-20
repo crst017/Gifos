@@ -1,12 +1,11 @@
-
 // Event to display "full screen" gif if any image on the result section is selected
 function favListener(element) {
     element.addEventListener("click", (e) => {displayFav(e)});
 }
 
-// Adding event to display full screen gif if the image is selected
+// Adding event to display full screen gif if any image in the trending section is selected
 for (const img of imgTrends) {
-    img.addEventListener("click", (e) => {displayFav(e)})
+    img.addEventListener("click", (e) => {displayFav(e)});
 }
 
 
@@ -43,6 +42,9 @@ function displayFav (event) {
 
     selected.classList.add("display-selected"); 
     document.body.classList.add("display-selected"); 
+
+    configureDownload( event.target.gif ); 
+    // downloadGif( event.target.gif ); //Adds the event if the download button (anchor) is clicked, that downloads the gif
 }
 
 function gifInLocalStorage( gifID ) {
@@ -77,11 +79,24 @@ function changeGifStatus () {
     }
 }
 
-// Closes the favorite window
+let urlBlob = "";
 const closeSelected = document.querySelector(".close-selected");
+// Closes the favorite window and removes te Blob
 closeSelected.addEventListener("click", () => {
 
     selected.classList.remove("display-selected");
     document.body.classList.remove("display-selected");
+    URL.revokeObjectURL(urlBlob); // Removes blob from memory
 });
 
+async function configureDownload( gifObject ) {
+
+    const downloadButton = document.querySelector(".download-button");
+    const gifFetch = await fetch( gifObject.src );
+    const file = await gifFetch.blob();
+
+    downloadButton.download = `${gifObject.title}_${gifObject.id}`;
+    const urlBlob = URL.createObjectURL( file );
+
+    downloadButton.href = urlBlob;
+}

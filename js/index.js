@@ -129,6 +129,7 @@ function displaySearch () {
     
 }
 
+//Assigns the GIF Object to each image
 function graphResults (result){
     
     for (const gif of result) {
@@ -140,8 +141,9 @@ function graphResults (result){
     }
 }
 
+//Assigns the GIF Object to each image
 function replaceResults (result) {
-    console.log(result);
+    
     let resultImages = document.querySelectorAll(".gifs-result-container img");
     console.log(resultImages)
     for (let index = 0; index < result.length; index++) {
