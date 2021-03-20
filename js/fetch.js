@@ -72,7 +72,7 @@ async function gifArray ( url , input ) {
         let username = gif.user && gif.user.display_name ? gif.user.display_name :
                                             gif.username ? gif.username          : "No Username";
         let id = gif.id;
-        let src = gif.images.original.webp;
+        let src = gif.images.original.url;
         let newGif = new Gif ( title , username , id , src )
         gifArray.push(newGif);
     }
