@@ -33,8 +33,7 @@ function displayGifs( view , imgSrc ) {
     h2SearchedTerm.textContent = view;
     searchBlock.id = "search-block-hide";
     results.classList.add('d-inline-block');
-    
-    img.src = imgSrc;
+    img.src = `${imgSrc}`;
     img.classList.add('img-display');
     resultsDivisor.style.display = "none";
 }
