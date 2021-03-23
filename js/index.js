@@ -84,7 +84,7 @@ function search(e) {
     let fClass = classesLength == 1 ? e.target.classList[0] : 
                  classesLength == 2 ? e.target.classList[1] : // To avoid searching by clicking on the close icon
                  e.target.tagName;
-    h2SearchedTerm.textContent = input.value.capitalize();
+    h2SearchedTerm.textContent = input.value.capitalize() || view; // View is the variable setted when you click on the navbar menu
     searchButton.classList.add("search-button-close"); // Change icon to close icon
 
     switch (fClass) {
