@@ -15,12 +15,11 @@ function displayFavorites (e) {
             break;
         case "Favoritos":
             searchFavorites();
+            displayGifs ( view , "../assets/icon-favoritos.svg" )
             pagination(1);
-            displayGifs ( view , "/assets/icon-favoritos.svg" )
             break;
         case "Mis GIFOS":
-            displayGifs ( view , "/assets/icon-mis-gifos.svg" )
-            
+            displayGifs ( view , "../assets/icon-mis-gifos.svg" )
             break;
     }
 }
