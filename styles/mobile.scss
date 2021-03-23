@@ -143,7 +143,7 @@ nav {
 h1 {
     font-size: 2.5rem;
     width: 76%;
-    margin: 0 auto;
+    margin: 0 auto 31px;
 
     span {
         color: $green;
@@ -161,7 +161,7 @@ h3 {
 }
 
 .search {
-    padding-top: 32px;
+    
     height: auto;
 
     img {
@@ -270,10 +270,23 @@ h3 {
     }   
 }
 
-.results{  
+
+.results{
+    
+    width: 100%;  
     padding-top: 42px;
     position: relative;
     display: none;
+
+    .section-image {
+        width: 2.4rem;
+        height: 2.4rem;
+        display: none;
+    }
+
+    .img-display {
+        display: inline-block;
+    }
 
     h2 {
         padding-bottom: 38px;
@@ -555,6 +568,10 @@ footer {
 .display-selected {
     overflow: hidden;   // to block the scroll
     display: block;     // to show the container with the selected gif
+}
+
+#search-block-hide {
+    display: none;
 }
 
 
