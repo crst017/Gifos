@@ -282,10 +282,17 @@ h3 {
         width: 2.4rem;
         height: 2.4rem;
         display: none;
+        @extend %bg-icons;
     }
 
-    .img-display {
+    .fav-gif-icon {
         display: inline-block;
+        background-image: url('../assets/icon-favoritos.svg');
+    }
+
+    .my-gif-icon {
+        display: inline-block;
+        background-image: url('../assets/icon-mis-gifos.svg');
     }
 
     h2 {

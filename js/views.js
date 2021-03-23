@@ -15,11 +15,11 @@ function displayFavorites (e) {
             break;
         case "Favoritos":
             searchFavorites();
-            displayGifs ( view , "../assets/icon-favoritos.svg" )
+            displayGifs( view , "fav-gif-icon" , "my-gif-icon" );
             pagination(1);
             break;
         case "Mis GIFOS":
-            displayGifs ( view , "../assets/icon-mis-gifos.svg" )
+            displayGifs( view , "my-gif-icon" , "fav-gif-icon" );
             break;
     }
 }
@@ -27,15 +27,14 @@ function displayFavorites (e) {
 const ul = document.querySelector('.menu ul');
 ul.addEventListener( "click" , (e) => { displayFavorites(e) })
 
-function displayGifs( view , imgSrc ) {
+function displayGifs( view , addClass , removeClass ) {
     
-    img = document.querySelector('.results img');
+    span = document.querySelector('.results .section-image');
     h2SearchedTerm.textContent = view;
     searchBlock.id = "search-block-hide";
     results.classList.add('d-inline-block');
-    img.src = imgSrc;
-    console.log(img.src , typeof(imgSrc))
-    img.classList.add('img-display');
+    span.classList.remove(`${removeClass}`);
+    span.classList.add(`${addClass}`);
     resultsDivisor.style.display = "none";
 }
 

@@ -1,4 +1,4 @@
-.menu .burger-logo, .search .input-container .search-button, footer .icons-container span, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
+.menu .burger-logo, .search .input-container .search-button, .results .section-image, footer .icons-container span, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
   display: inline-block;
   background-position: center;
   background-repeat: no-repeat;
@@ -291,8 +291,14 @@ h3 {
   display: none;
 }
 
-.results .img-display {
+.results .fav-gif-icon {
   display: inline-block;
+  background-image: url("../assets/icon-favoritos.svg");
+}
+
+.results .my-gif-icon {
+  display: inline-block;
+  background-image: url("../assets/icon-mis-gifos.svg");
 }
 
 .results h2 {
