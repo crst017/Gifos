@@ -33,7 +33,7 @@ function displayGifs( view , imgSrc ) {
     h2SearchedTerm.textContent = view;
     searchBlock.id = "search-block-hide";
     results.classList.add('d-inline-block');
-    img.src = "../assets/icon-favoritos.svg";
+    img.src = imgSrc;
     console.log(img.src , typeof(imgSrc))
     img.classList.add('img-display');
     resultsDivisor.style.display = "none";
