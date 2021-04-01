@@ -14,12 +14,15 @@ function displayFavorites (e) {
         case "Modo Nocturno":
             break;
         case "Favoritos":
+            removeAllChildNodes(gifsResultContainer);
             searchFavorites();
             displayGifs( view , "fav-gif-icon" , "my-gif-icon" );
             pagination(1);
             break;
         case "Mis GIFOS":
+            removeAllChildNodes(gifsResultContainer);
             displayGifs( view , "my-gif-icon" , "fav-gif-icon" );
+            pagination(1);
             break;
     }
 }
@@ -29,6 +32,7 @@ ul.addEventListener( "click" , (e) => { displayFavorites(e) })
 
 function displayGifs( view , addClass , removeClass ) {
     
+    // removeAllChildNodes(gifsResultContainer);
     span = document.querySelector('.results .section-image');
     h2SearchedTerm.textContent = view;
     searchBlock.id = "search-block-hide";
@@ -40,6 +44,7 @@ function displayGifs( view , addClass , removeClass ) {
 
 function searchFavorites() {
 
+    
     for (let index = 0; index < localStorage.length; index++) {
 
         key = localStorage.key(index);

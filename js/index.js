@@ -76,6 +76,9 @@ input.addEventListener("input", () => {
 });
 
 searchButton.addEventListener("click", (e) => {search(e)}); // Search clicking on search buttton
+input.addEventListener("keyup", (e) => {
+    if (e.key == "Enter") { search(e) } 
+});
 let pages = 0;
 
 function search(e) {   
@@ -86,11 +89,11 @@ function search(e) {
                  e.target.tagName;
     h2SearchedTerm.textContent = input.value.capitalize() || view; // View is the variable setted when you click on the navbar menu
     searchButton.classList.add("search-button-close"); // Change icon to close icon
-
     switch (fClass) {
         case "trend-suggestion":
         case "search-button":
         case "li-autocomplete":
+        case "input-search":
             offset = 0;
             fetchSearch(input.value, offset).then( (result) => {
                 graphResults(result.gifArray);
