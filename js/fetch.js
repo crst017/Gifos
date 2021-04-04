@@ -54,7 +54,7 @@ async function fetchTrendingGifs() {
 
 async function fetchSearch(input,offset) {
 
-    const urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input}&limit=12&offset=${offset}`;
+    const urlSearch = `${url}/gifs/search?api_key=${api_key}&q=${input.toLowerCase()}&limit=12&offset=${offset}`;
     return gifArray( urlSearch , input ) 
 }
 
@@ -66,7 +66,8 @@ async function gifArray ( url , input ) {
     const gifs = json.data;
     let gifArray = [];
     let pages = Math.ceil(json.pagination.total_count/12);
-    
+    let empty = json.pagination.total_count == 0 ? true : false ;
+
     for (const gif of gifs) {
         
         let title = gif.title ? gif.title.capitalize().split(" GIF",1)[0] : input;
@@ -79,5 +80,5 @@ async function gifArray ( url , input ) {
         gifArray.push(newGif);
     }
 
-    return { "gifArray" : gifArray , "pages" : pages}  
+    return { "gifArray" : gifArray , "pages" : pages, "empty" : empty}  
 }

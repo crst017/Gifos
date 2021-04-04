@@ -34,7 +34,7 @@ function pagination(pageNumber) {
 
     pageNumber = parseInt(pageNumber);
     let offset = 0;
-
+    // if (pageNumber > pages) { pageNumber = 1}
     switch (pageNumber){
         case 1:
             setNumeration( 1 );

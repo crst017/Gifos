@@ -79,7 +79,9 @@ searchButton.addEventListener("click", (e) => {search(e)}); // Search clicking o
 input.addEventListener("keyup", (e) => {
     if (e.key == "Enter") { search(e) } 
 });
+
 let pages = 0;
+const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
     
@@ -87,8 +89,10 @@ function search(e) {
     let fClass = classesLength == 1 ? e.target.classList[0] : 
                  classesLength == 2 ? e.target.classList[1] : // To avoid searching by clicking on the close icon
                  e.target.tagName;
-    h2SearchedTerm.textContent = input.value.capitalize() || view; // View is the variable setted when you click on the navbar menu
+    h2SearchedTerm.textContent = input.value.capitalize() || view ; // View is the variable setted when you click on the navbar menu
     searchButton.classList.add("search-button-close"); // Change icon to close icon
+    paginationContainer.removeAttribute('id');
+
     switch (fClass) {
         case "trend-suggestion":
         case "search-button":
@@ -96,8 +100,16 @@ function search(e) {
         case "input-search":
             offset = 0;
             fetchSearch(input.value, offset).then( (result) => {
-                graphResults(result.gifArray);
-                pages = result.pages;
+                let empty = result.empty;
+                removeAllChildNodes(gifsResultContainer);
+                if ( empty ) {
+                    displayHomeEmpty();
+                } else {
+                    gifsResultContainer.classList.remove('empty');
+                    graphResults(result.gifArray);
+                    pages = result.pages;
+                }
+                
             });
             pagination(1);
             displaySearch();
@@ -155,4 +167,16 @@ function replaceResults (result) {
     }
 }
 
+function displayHomeEmpty() {
+    gifsResultContainer.classList.add('empty');
+    const img = document.createElement('img');
+    img.src = "/assets/icon-busqueda-sin-resultado.svg"
+    gifsResultContainer.appendChild(img);
+
+    h2 = document.createElement('h2');
+    h2.textContent = "Intenta con otra búsqueda.";
+    gifsResultContainer.appendChild(h2);
+
+    paginationContainer.id = 'pagination-hide';
+}
 
