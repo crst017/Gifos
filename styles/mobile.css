@@ -1,4 +1,4 @@
-.menu .burger-logo, .search .input-container .search-button, .results .section-image, footer .icons-container span, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
+.menu .burger-logo, .search .input-container .search-button, .results .section-image, .results .empty span, footer .icons-container span, .selected .close-selected, .selected .buttons .fav-button, .selected .buttons .download-button {
   display: inline-block;
   background-position: center;
   background-repeat: no-repeat;
@@ -335,10 +335,9 @@ h3 {
 .results .empty {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
   gap: 30px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .results .empty h2 {
@@ -348,8 +347,11 @@ h3 {
   margin: 0 auto;
 }
 
-.results .empty img {
+.results .empty span {
   width: 150px;
+  height: 150px;
+  background-image: url("../assets/icon-busqueda-sin-resultado.svg");
+  margin: 0 auto;
 }
 
 .d-inline-block {

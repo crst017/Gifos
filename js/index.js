@@ -169,9 +169,8 @@ function replaceResults (result) {
 
 function displayHomeEmpty() {
     gifsResultContainer.classList.add('empty');
-    const img = document.createElement('img');
-    img.src = "/assets/icon-busqueda-sin-resultado.svg"
-    gifsResultContainer.appendChild(img);
+    const span = document.createElement('span');
+    gifsResultContainer.appendChild(span);
 
     h2 = document.createElement('h2');
     h2.textContent = "Intenta con otra búsqueda.";

@@ -324,8 +324,8 @@ h3 {
 
     .empty {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
         gap: 30px;
-        justify-content: center;
 
         h2 {
             font-size: 1.6rem;
@@ -334,8 +334,12 @@ h3 {
             margin: 0 auto;
         }
 
-        img {
+        span {
             width: 150px;
+            height: 150px;
+            @extend %bg-icons;
+            background-image: url('../assets/icon-busqueda-sin-resultado.svg');
+            margin: 0 auto;
         }
     }
 }
