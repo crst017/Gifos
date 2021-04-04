@@ -77,7 +77,10 @@ input.addEventListener("input", () => {
 
 searchButton.addEventListener("click", (e) => {search(e)}); // Search clicking on search buttton
 input.addEventListener("keyup", (e) => {
-    if (e.key == "Enter") { search(e) } 
+    if (e.key == "Enter") { 
+        search(e);
+        input.blur();
+    } 
 });
 
 let pages = 0;
