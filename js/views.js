@@ -30,14 +30,10 @@ function displayFavorites (e) {
             displayGifs( view , "my-gif-icon" , "fav-gif-icon" );
             break;
         case "GIFOS":
-            searchBlock.removeAttribute('id');
-            results.classList.remove('d-inline-block');
-            const span = document.querySelector('.results .section-image');
-            span.removeAttribute('class');
-            span.classList.add('section-image');
+            goHome();
             break;
         default: // Click on night or day mode
-            // results.classList.add('d-inline-block');
+            goHome();
             changeMode();
             break;
     }
@@ -87,6 +83,12 @@ function displayFavsEmpty() {
     h2 = document.createElement('h2');
     h2.textContent = "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
     gifsResultContainer.appendChild(h2);
+}
 
-    
+function goHome() {
+    searchBlock.removeAttribute('id');
+    results.classList.remove('d-inline-block');
+    const span = document.querySelector('.results .section-image');
+    span.removeAttribute('class');
+    span.classList.add('section-image');
 }

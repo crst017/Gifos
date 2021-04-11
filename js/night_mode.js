@@ -11,6 +11,7 @@ const searchContainer = document.querySelector('.search-container');
 const iconSearch = document.querySelector('.search-button');
 const burgerLogo = document.querySelector('.burger-logo');
 const menu = document.querySelector('.menu ul');
+const firstLi = document.querySelector('.menu ul li');
 
 let night_mode = localStorage.getItem( "night" );
 
@@ -60,6 +61,7 @@ ul.addEventListener( "click" , ()=> {
 
 function applyNight() {
 
+    firstLi.textContent = "Modo Diurno";
     nav.id = 'dark';
     footer.id = 'dark';
     searchSection.id = 'dark';
@@ -80,6 +82,7 @@ function applyNight() {
 
 function applyDay() {
 
+    firstLi.textContent = "Modo Nocturno";
     nav.removeAttribute('id');
     footer.removeAttribute('id');
     searchSection.removeAttribute('id');
