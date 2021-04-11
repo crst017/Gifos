@@ -45,7 +45,10 @@ input.addEventListener("input", () => {
 
     let inputValue = input.value;
     let urlAutocomplete = `${url}/gifs/search/tags?api_key=${api_key}&q=${inputValue}&limit=4`;
-    searchButton.classList.remove("search-button-close");
+    searchButton.classList.remove("search-button-close"); 
+    if (night_mode) iconSearch.id = 'icon-search';
+
+    
 
     fetchAutocomplete(urlAutocomplete).then( result => {
 
@@ -95,6 +98,7 @@ function search(e) {
                  e.target.tagName;
     h2SearchedTerm.textContent = input.value.capitalize() || view ; // View is the variable setted when you click on the navbar menu
     searchButton.classList.add("search-button-close"); // Change icon to close icon
+    if (night_mode) iconSearch.id = 'icon-close';
     paginationContainer.removeAttribute('id');
 
     switch (fClass) {
@@ -135,6 +139,7 @@ function search(e) {
 
 function resetSearch () {
     searchButton.classList.remove("search-button-close");
+    if (night_mode) iconSearch.id = 'icon-search';
     sectionResults.classList.remove("d-inline-block");
     input.value = ""
 }

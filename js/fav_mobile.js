@@ -63,6 +63,7 @@ function gifInLocalStorage( gifID ) {
     return statusStorage;
 }
 
+const closeSelected = document.querySelector(".close-selected");
 function changeGifStatus () {
     
     statusGif = !statusGif;
@@ -80,7 +81,6 @@ function changeGifStatus () {
 }
 
 let urlBlob = "";
-const closeSelected = document.querySelector(".close-selected");
 // Closes the favorite window and removes te Blob
 closeSelected.addEventListener("click", () => {
 

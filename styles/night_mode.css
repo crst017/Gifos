@@ -1,0 +1,37 @@
+#dark {
+  background-color: #37383C;
+  color: white;
+  border-color: black;
+}
+
+#dark-trending {
+  background-color: #222326;
+  color: white;
+}
+
+#dark-black {
+  background-color: black;
+  color: white;
+}
+
+#border-white {
+  border-color: white;
+}
+
+#icon-search {
+  background-image: url(../assets/icon-search-modo-noct.svg);
+}
+
+#icon-close {
+  background-image: url(../assets/close-modo-noct.svg);
+}
+
+#icon-burger {
+  background-image: url(../assets/burger-modo-noct.svg);
+}
+
+#dark-selected {
+  background-color: white;
+  color: black;
+}
+/*# sourceMappingURL=night_mode.css.map */

@@ -79,6 +79,5 @@ async function gifArray ( url , input ) {
         let newGif = new Gif ( title , username , id , src , downloadSrc)
         gifArray.push(newGif);
     }
-    console.log(pages)
     return { "gifArray" : gifArray , "pages" : pages, "empty" : empty}  
 }

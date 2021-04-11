@@ -13,15 +13,13 @@ logo.addEventListener( "click" , (e) => { displayFavorites(e) });
 
 function displayFavorites (e) {
 
-    checkBox.checked = false;
+    checkBox.checked = false; //Close menu automatically
     view = e.target.textContent || "GIFOS";
     h2SearchedTerm.textContent = view;
     paginationContainer.id = 'pagination-hide'; //Dont use pagination
     resetSearch();
 
     switch (view) {
-        case "Modo Nocturno":
-            break;
         case "Favoritos":
             removeAllChildNodes(gifsResultContainer);
             searchFavorites();
@@ -37,6 +35,10 @@ function displayFavorites (e) {
             const span = document.querySelector('.results .section-image');
             span.removeAttribute('class');
             span.classList.add('section-image');
+            break;
+        default: // Click on night or day mode
+            // results.classList.add('d-inline-block');
+            changeMode();
             break;
     }
 }
@@ -60,14 +62,9 @@ function searchFavorites() {
 
         const key = localStorage.key(index);
         let gif = localStorage.getItem(key);
+        gif = JSON.parse(gif);
         
-        try {
-            gif = JSON.parse(gif);
-        } catch {
-            gif = null
-        }
-        
-        if (gif){
+        if (gif.src){
 
             let img = document.createElement("img");
             img.src = gif.src;
