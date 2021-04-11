@@ -4,12 +4,21 @@ const results = document.querySelector(".results");
 const resultsDivisor = document.querySelector('.results-divisor');
 const checkBox = document.querySelector('.checkbox');
 
-let view ;
+let view;
+const ul = document.querySelector('.menu ul');
+ul.addEventListener( "click" , (e) => { displayFavorites(e) });
+
+const logo = document.querySelector('.logo');
+logo.addEventListener( "click" , (e) => { displayFavorites(e) });
+
 function displayFavorites (e) {
 
     checkBox.checked = false;
     view = e.target.textContent || "GIFOS";
     h2SearchedTerm.textContent = view;
+    paginationContainer.id = 'pagination-hide'; //Dont use pagination
+    resetSearch();
+
     switch (view) {
         case "Modo Nocturno":
             break;
@@ -17,33 +26,25 @@ function displayFavorites (e) {
             removeAllChildNodes(gifsResultContainer);
             searchFavorites();
             displayGifs( view , "fav-gif-icon" , "my-gif-icon" ); 
-            offset = 1;
-            pagination(1);
             break;
         case "Mis GIFOS":
             removeAllChildNodes(gifsResultContainer);
             displayGifs( view , "my-gif-icon" , "fav-gif-icon" );
-            pagination(1);
             break;
         case "GIFOS":
             searchBlock.removeAttribute('id');
             results.classList.remove('d-inline-block');
-            const img = document.querySelector('.section-image').remove();
-            // console.log(img)
+            const span = document.querySelector('.results .section-image');
+            span.removeAttribute('class');
+            span.classList.add('section-image');
             break;
     }
 }
 
-const ul = document.querySelector('.menu ul');
-ul.addEventListener( "click" , (e) => { displayFavorites(e) });
-
-const logo = document.querySelector('.logo');
-logo.addEventListener( "click" , (e) => { displayFavorites(e) });
-
-// selected "view", class to add, class to remove
+// selected "view", class to add, class to remove. Each class changes the icon to display according to the selected view
 function displayGifs( view , addClass , removeClass ) {
 
-    span = document.querySelector('.results .section-image');
+    const span = document.querySelector('.section-image');
     h2SearchedTerm.textContent = view;
     searchBlock.id = "search-block-hide";
     results.classList.add('d-inline-block');
@@ -57,11 +58,16 @@ function searchFavorites() {
     let gifsCount = 0;
     for (let index = 0; index < localStorage.length; index++) {
 
-        key = localStorage.key(index);
-        gif = localStorage.getItem(key);
-        gif = JSON.parse(gif);
-
-        if (gif.src){
+        const key = localStorage.key(index);
+        let gif = localStorage.getItem(key);
+        
+        try {
+            gif = JSON.parse(gif);
+        } catch {
+            gif = null
+        }
+        
+        if (gif){
 
             let img = document.createElement("img");
             img.src = gif.src;
@@ -71,11 +77,19 @@ function searchFavorites() {
             gifsCount++;
         }
     }
-
-    if ( gifsCount == 0) { displayEmpty() }
+    if ( gifsCount == 0) { displayFavsEmpty() }
 }
 
-function displayEmpty() {
-    const gifsResultContainer = document.querySelector('.gifs-result-container');
-    // gifsResultContainer.style.display = "none";
+function displayFavsEmpty() {
+    gifsResultContainer.classList.add('empty');
+    const span = document.createElement('span');
+    span.removeAttribute('class'); //Clears any class in order to display the correct image
+    span.classList.add('empty-favs');
+    gifsResultContainer.appendChild(span);
+
+    h2 = document.createElement('h2');
+    h2.textContent = "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
+    gifsResultContainer.appendChild(h2);
+
+    
 }

@@ -3,7 +3,7 @@ $purple-background: rgba(87,46,229,0.90);
 $green: #50E3C2;
 $gray: #9CAFC3;
 $trending-background: #F3F5F8;
-$fav-background: rgba(255,255,255,0.90);
+$fav-background: rgba(255,255,255,1);
 
 $montserrat: 'Montserrat', sans-serif;
 $roboto: 'Roboto', sans-serif;
@@ -56,7 +56,8 @@ nav {
 
     .logo {
         position: relative;
-        cursor: po;
+        cursor: pointer;
+
         img {
             height: 4.9rem;
             width: 5.6rem;
@@ -94,6 +95,7 @@ nav {
         transform: translate(1.9rem , -0.45rem);
         opacity: 0;
         z-index: 1;
+        cursor: pointer;
 
         &:checked ~ ul {
             max-height: 100vh;
@@ -116,6 +118,7 @@ nav {
         overflow: hidden;
         transition: max-height 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
         z-index: 1;
+        cursor: pointer;
 
         li {
             font-size: 1.5rem;
@@ -314,7 +317,7 @@ h3 {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 120px;
         gap: 25px 25px;
-        margin: 0 25px;
+        margin: 0 25px 25px;
 
         img {
             width: 100%;
@@ -341,6 +344,14 @@ h3 {
             background-image: url('../assets/icon-busqueda-sin-resultado.svg');
             margin: 0 auto;
         }
+
+        .empty-favs {
+            background-image: url('../assets/icon-fav-sin-contenido.svg');
+        }
+
+        .empty-my-gifs {
+            background-image: url('../assets/icon-mis-gifos-sin-contenido.svg');
+        }
     }
 }
 
@@ -354,7 +365,7 @@ h3 {
     align-items: center;
     width: 75%;
     max-width: 340px;
-    margin: 25px auto ;
+    margin: 0 auto 25px;
     justify-content: space-between;
     list-style: none;
     
@@ -421,7 +432,6 @@ h3 {
     .trending-gifs-container {
         display: flex;
         overflow-x: scroll;
-        // margin: 0 10%;
         // overscroll-behavior-x: contain;
         scroll-snap-type: x proximity;
 
@@ -430,7 +440,7 @@ h3 {
             min-width: 250px;
             height: 187px;
             padding: 0 11px;
-            // scroll-snap-align: center;
+            scroll-snap-align: center;
         }
     }
 }
@@ -494,7 +504,7 @@ footer {
     display: none;
     position: absolute;
     left: 0px;
-    background-color: white;
+    background-color: $fav-background;
     height: 100vh;
     width: 100%;
     z-index: 1;
@@ -554,7 +564,6 @@ footer {
             width: 36px;
             height: 36px;
             background-size: 100%;
-            // background: transparent;
         }
 
         .fav-button {

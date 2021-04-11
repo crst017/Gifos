@@ -88,6 +88,7 @@ const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
     
+    checkBox.checked = false;
     let classesLength = e.target.classList.length;
     let fClass = classesLength == 1 ? e.target.classList[0] : 
                  classesLength == 2 ? e.target.classList[1] : // To avoid searching by clicking on the close icon
