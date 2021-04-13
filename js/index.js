@@ -90,7 +90,7 @@ let pages = 0;
 const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
-    
+    console.log("estoy busicando")
     checkBox.checked = false;
     let classesLength = e.target.classList.length;
     let fClass = classesLength == 1 ? e.target.classList[0] : 

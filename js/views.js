@@ -5,6 +5,7 @@ const resultsDivisor = document.querySelector('.results-divisor');
 const checkBox = document.querySelector('.checkbox');
 
 let view;
+// let gifsPages = [];
 const ul = document.querySelector('.menu ul');
 ul.addEventListener( "click" , (e) => { displayFavorites(e) });
 
@@ -16,7 +17,7 @@ function displayFavorites (e) {
     checkBox.checked = false; //Close menu automatically
     view = e.target.textContent || "GIFOS";
     h2SearchedTerm.textContent = view;
-    paginationContainer.id = 'pagination-hide'; //Dont use pagination
+    // paginationContainer.id = 'pagination-hide'; //Dont use pagination
     resetSearch();
 
     switch (view) {
@@ -48,32 +49,38 @@ function displayGifs( view , addClass , removeClass ) {
     results.classList.add('d-inline-block');
     span.classList.remove(`${removeClass}`);
     span.classList.add(`${addClass}`);
-    spanAutocompleteDivisor.classList.remove("d-inline-block");
 }
+
+
 
 function searchFavorites() {
 
-    let gifsCount = 0;
+    let localStorageGifs = [];
+
     for (let index = 0; index < localStorage.length; index++) {
 
         const key = localStorage.key(index);
         let gif = localStorage.getItem(key);
-        gif = JSON.parse(gif);
         
-        if (gif.src){
-
-            let img = document.createElement("img");
-            img.src = gif.src;
-            img.gif = gif; // Adding the Gif object as a property to the HTML tag
-            gifsResultContainer.appendChild(img);
-            favListener(img); // Adding event to display full screen gif if the image is clicked
-            gifsCount++;
-        }
+        try { gif = JSON.parse(gif) } 
+        catch (error) { gif = null }
+        
+        if (gif.src) localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage
     }
-    if ( gifsCount == 0) { displayFavsEmpty() }
+   
+    if ( localStorageGifs.length == 0) {
+        displayFavEmpty()
+    } else {
+
+        pages = Math.ceil( localStorageGifs.length / 12); // Sets the global variable pages for pagination
+        gifsPages = createGifsPages( localStorageGifs , 1); // Creates an array, each position is a 12 Gifs page
+        pagination(1);
+        createGifsElement( gifsPages , 1 );
+    }  
 }
 
-function displayFavsEmpty() {
+function displayFavEmpty() {
+
     gifsResultContainer.classList.add('empty');
     const span = document.createElement('span');
     span.removeAttribute('class'); //Clears any class in order to display the correct image
@@ -91,4 +98,46 @@ function goHome() {
     const span = document.querySelector('.results .section-image');
     span.removeAttribute('class');
     span.classList.add('section-image');
+}
+
+function createGifsElement ( gifPage , actualPage ) {
+    removeAllChildNodes(gifsResultContainer);
+    for (const gif of gifPage[actualPage - 1]) { //page number is a global variable that indicates the current page
+        let img = document.createElement("img");
+        img.src = gif.src;
+        img.gif = gif; // Adding the Gif object as a property to the HTML tag
+        gifsResultContainer.appendChild(img);
+        favListener(img); // Adding event to display full screen gif if the image is clicked
+    }
+}
+
+function replaceGifs ( gifPage , actualPage ) {
+
+    let page = gifPage[actualPage - 1];
+    let resultImages = document.querySelectorAll(".gifs-result-container img");
+
+    for (let index = 0; index < 12; index++) {
+
+        if (page[index]) {
+            resultImages[index].src = page[index].src;
+            resultImages[index].gif = page[index];
+        } else {
+            try { resultImages[index].remove() } 
+            catch { break }
+        }
+    }
+}
+
+function createGifsPages( localStorageGifs ) {
+
+    let gifPagesArray = [];
+    for (let index = 0; index < pages; index++) {
+
+        let inicio = ( index * 12 );
+        let fin = ( inicio + 12);
+        let gifPage = localStorageGifs.slice( inicio , fin );
+
+        gifPagesArray.push(gifPage); // Creates an array, each position is a 12 Gifs page
+    }
+    return gifPagesArray;
 }

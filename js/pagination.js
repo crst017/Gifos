@@ -4,30 +4,67 @@ const paginationNext = document.querySelector(".pagination span:last-child");
 
 for (const item of itemsPagination) {  
     item.addEventListener("click", (e) => {
-        offset = pagination(item.textContent);
-        search(e); // Search clicking on any pagination number
+
+        let rPagination = pagination(item.textContent);    
+        pageNumber = item.textContent  
+        switch (view) {
+            case "Favoritos":
+                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                break;
+            case "Mis GIFOS":
+                break;
+            default:
+                offset = rPagination[0];
+                search(e); // Search clicking on any pagination number
+                break;
+        }
     });
 }
 
 paginationPrev.addEventListener ("click" , (e) => { 
     
-    let pageNumber = 0;
     for (const item of itemsPagination) {   
         if (item.classList != 0)  pageNumber = item.textContent; // assigns the clicked number
     }
-    if (pageNumber != 1) offset = pagination(pageNumber - 1); // 
-    search(e); // Search clicking on prev button
+    if (pageNumber != 1) {
+        let rPagination = pagination(pageNumber - 1); 
+        offset = rPagination[0];
+        pageNumber = rPagination[1];
+        switch (view) {
+            case "Favoritos": 
+                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                break;
+            case "Mis GIFOS":
+                break;
+            default:
+                search(e); // Search clicking on prev button
+                break;
+        }
+    }
 });
 
 paginationNext.addEventListener ("click" , (e) => {
-    let pageNumber = 0;
+
     for (const item of itemsPagination) {   
         if (item.classList != 0)  {
             pageNumber = item.textContent;
         }
     }
-    if (pageNumber != pages) offset = pagination(Number(pageNumber) + Number(1));
-    search(e); // Search clicking on next button
+    if (pageNumber != pages) {
+        let rPagination = pagination(Number(pageNumber) + Number(1)); 
+        offset = rPagination[0];
+        pageNumber = rPagination[1];
+        switch (view) {
+            case "Favoritos": 
+                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                break;
+            case "Mis GIFOS":
+                break;
+            default:
+                search(e); // Search clicking on prev button
+                break;
+        }
+    }
 });
 
 let dark = "";
@@ -36,6 +73,7 @@ function pagination(pageNumber) {
     pageNumber = parseInt(pageNumber);
     let offset = 0;
     dark = night_mode ? "dark-selected" : "";
+    if (pageNumber > pages && pages != 0) pageNumber = pages; // It prevents changing to any page that doesn't exist
     switch (pageNumber){
         case 1:
             setNumeration( 1 );
@@ -64,7 +102,7 @@ function pagination(pageNumber) {
             break;
     }
     offset = (pageNumber - 1) * 12;
-    return offset
+    return [ offset , pageNumber ]
 }        
 
 // Assigns the numbers for the correct numeration
