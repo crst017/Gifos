@@ -46,9 +46,7 @@ input.addEventListener("input", () => {
     let inputValue = input.value;
     let urlAutocomplete = `${url}/gifs/search/tags?api_key=${api_key}&q=${inputValue}&limit=4`;
     searchButton.classList.remove("search-button-close"); 
-    if (night_mode) iconSearch.id = 'icon-search';
-
-    
+    if (night_mode) iconSearch.id = 'icon-search';    
 
     fetchAutocomplete(urlAutocomplete).then( result => {
 
@@ -90,7 +88,7 @@ let pages = 0;
 const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
-    console.log("estoy busicando")
+    
     checkBox.checked = false;
     let classesLength = e.target.classList.length;
     let fClass = classesLength == 1 ? e.target.classList[0] : 
@@ -116,10 +114,10 @@ function search(e) {
                     gifsResultContainer.classList.remove('empty');
                     graphResults(result.gifArray);
                     pages = result.pages;
+                    pagination(1);
                 }
                 
             });
-            pagination(1);
             displaySearch();
             break;
         case "LI":
