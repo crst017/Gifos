@@ -74,7 +74,6 @@ function pagination(pageNumber) {
     let offset = 0;
     dark = night_mode ? "dark-selected" : "";
     if (pageNumber > pages && pages != 0) pageNumber = pages; // It prevents changing to any page that doesn't exist
-    console.log(pages)
     switch (pageNumber){
         case 1:
             setNumeration( 1 );
@@ -102,7 +101,7 @@ function pagination(pageNumber) {
             itemsPagination[2].id = dark;
             break;
     }
-    pages < 5 ? hideNumeration() : displayNumeration();
+    if (pages < 5) hideNumeration() // Hides numeration when there are less than 5 pages
     offset = (pageNumber - 1) * 12;
     return [ offset , pageNumber ]
 }        
@@ -117,16 +116,8 @@ function setNumeration( firstNumber ){
 }
 
 function hideNumeration () {
-    console.log("esconder")
-    for (let index = pages; index < 5; index++) {
-        itemsPagination[index].id = 'pagination-hide'
-        console.log(itemsPagination[index])
-    }
-}
 
-function displayNumeration () {
-    console.log("desesconder")
-    for (const item of itemsPagination) {
-        item.removeAttribute('id');
+    for (let index = pages; index < 5; index++) {
+        itemsPagination[index].id = 'pagination-hide';
     }
 }
