@@ -1,0 +1,51 @@
+h1 {
+  font-size: 3.5rem;
+  max-width: 600px;
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 3rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+}
+
+.search p {
+  font-size: 1.6rem;
+}
+
+.trending {
+  padding-top: 80px;
+  padding-bottom: 160px;
+}
+
+.trending p {
+  font-size: 1.8rem;
+}
+
+.trending .trending-gifs-container img {
+  width: 65%;
+  height: 250px;
+}
+
+.results .gifs-result-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (280px)[3];
+      grid-template-columns: repeat(3, 280px);
+  -ms-grid-rows: 220px;
+      grid-template-rows: 220px;
+  gap: 40px 40px;
+  margin: 0 30px 60px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.results .gifs-result-container img {
+  height: 220px;
+}
+/*# sourceMappingURL=1024px.css.map */

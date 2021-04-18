@@ -1,0 +1,23 @@
+.results .gifs-result-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (260px)[4];
+      grid-template-columns: repeat(4, 260px);
+  -ms-grid-rows: 200px;
+      grid-template-rows: 200px;
+  gap: 40px 40px;
+  margin: 0 30px 60px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.results .gifs-result-container img {
+  height: 200px;
+}
+
+.trending .trending-gifs-container img {
+  width: 350px;
+  height: 270px;
+}
+/*# sourceMappingURL=1200px.css.map */

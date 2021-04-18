@@ -313,7 +313,7 @@ h3 {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 120px;
         gap: 25px 25px;
-        margin: 0 25px 25px;
+        margin: 0 7% 25px;
 
         img {
             width: 100%;
@@ -360,7 +360,7 @@ h3 {
     display: flex;
     align-items: center;
     width: 75%;
-    max-width: 340px;
+    max-width: 440px;
     margin: 0 auto 25px;
     justify-content: space-between;
     list-style: none;
@@ -428,13 +428,13 @@ h3 {
     .trending-gifs-container {
         display: flex;
         overflow-x: scroll;
-        // overscroll-behavior-x: contain;
         scroll-snap-type: x proximity;
 
         img {
             width: 65%;
             min-width: 250px;
-            height: 187px;
+            max-width: 350px;
+            height: 190px;
             padding: 0 11px;
             scroll-snap-align: center;
         }
