@@ -111,7 +111,7 @@ function search(e) {
                 if ( empty ) {
                     displayHomeEmpty();
                 } else {
-                    gifsResultContainer.classList.remove('empty');
+                    gifsResultContainer.removeAttribute('id');
                     graphResults(result.gifArray);
                     pages = result.pages;
                     pagination(1);
@@ -175,7 +175,7 @@ function replaceResults (result) {
 }
 
 function displayHomeEmpty() {
-    gifsResultContainer.classList.add('empty');
+    gifsResultContainer.id = 'empty';
     const span = document.createElement('span');
     gifsResultContainer.appendChild(span);
 

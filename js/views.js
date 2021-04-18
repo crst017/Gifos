@@ -81,7 +81,7 @@ function searchFavorites() {
 
 function displayFavEmpty() {
 
-    gifsResultContainer.classList.add('empty');
+    gifsResultContainer.id = 'empty';
     const span = document.createElement('span');
     span.removeAttribute('class'); //Clears any class in order to display the correct image
     span.classList.add('empty-favs');
