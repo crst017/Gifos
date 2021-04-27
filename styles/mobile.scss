@@ -519,53 +519,55 @@ footer {
             color: black;
         }
     }
+}
 
-    .buttons {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-        .fav-button, .download-button {
-            @extend %bg-button;
-            @extend %bg-icons;
-            width: 36px;
-            height: 36px;
+    .fav-button, .download-button {
+        @extend %bg-button;
+        @extend %bg-icons;
+        width: 36px;
+        height: 36px;
+        background-size: 100%;
+    }
+
+    .fav-button {
+        background-image: url("../assets/icon-fav.svg");
+        margin-right: 22px;
+
+        &:hover {
+            background-image: url("../assets/icon-fav-hover.svg");
             background-size: 100%;
         }
 
-        .fav-button {
-            background-image: url("../assets/icon-fav.svg");
-            margin-right: 22px;
-
-            &:hover {
-                background-image: url("../assets/icon-fav-hover.svg");
-                background-size: 100%;
-            }
-
-            &:active {
-                background-image: url("../assets/icon-fav-active.svg");
-                background-size: 20px;
-            }
-        }
-
-        .fav-button-selected {
+        &:active {
             background-image: url("../assets/icon-fav-active.svg");
             background-size: 20px;
-
-            &:hover {
-                background-image: url("../assets/icon-fav-active.svg");
-                background-size: 20px;
-            }
-        }
-
-        .download-button {
-            background-image: url("../assets/icon-download.svg");
+            background-color: white;
             border-radius: 6px;
-            border: 1px solid $gray;
+        }
+    }
 
-            &:hover {
-                background-image: url("../assets/icon-download-hover.svg");
-            }
+    .fav-button-selected {
+        background-image: url("../assets/icon-fav-active.svg");
+        background-size: 20px;
+
+        &:hover {
+            background-image: url("../assets/icon-fav-active.svg");
+            background-size: 20px;
+        }
+    }
+
+    .download-button {
+        background-image: url("../assets/icon-download.svg");
+        border-radius: 6px;
+        border: 1px solid $gray;
+
+        &:hover {
+            background-image: url("../assets/icon-download-hover.svg");
         }
     }
 }

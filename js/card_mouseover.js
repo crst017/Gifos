@@ -15,8 +15,6 @@ function addMouseOver ( element ) {
     title.textContent = element.gif.title;
     username.textContent = element.gif.username;
     
-    let brother = element.nextSibling
-    
     // element.addEventListener( "mouseenter" , () => {
     //     element.nextSibling.id = 'visible'
     // })
