@@ -17,13 +17,13 @@ function addMouseOver ( element ) {
     
     let brother = element.nextSibling
     
-    element.addEventListener( "mouseenter" , () => {
-        element.nextSibling.id = 'visible'
-    })
+    // element.addEventListener( "mouseenter" , () => {
+    //     element.nextSibling.id = 'visible'
+    // })
 
-    element.addEventListener( "mouseleave" , () => {
-        element.nextSibling.removeAttribute('id');
-    })
+    // element.addEventListener( "mouseleave" , () => {
+    //     element.nextSibling.removeAttribute('id');
+    // })
 }
 
 // function mouseOverVisible() {
