@@ -13,6 +13,24 @@ h3 {
   line-height: 2.5rem;
 }
 
+.buttons .fav-button, .buttons .download-button, .buttons .fullview-button {
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.buttons .fav-button, .buttons .download-button, .buttons .fullview-button {
+  width: 25px;
+  height: 25px;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  border: none;
+  outline: none;
+  background-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .search p {
   font-size: 1.6rem;
 }
@@ -47,5 +65,127 @@ h3 {
 
 .results .gifs-result-container img {
   height: 220px;
+  max-width: none;
+}
+
+#empty h2 {
+  font-size: 2.2rem;
+}
+
+.card-container {
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+  background-color: red;
+}
+
+.card-container .options {
+  display: none;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #572EE599;
+  top: 0;
+  left: 0;
+}
+
+.card-container .options .text {
+  position: absolute;
+  bottom: 20px;
+  left: 12px;
+}
+
+.card-container .options p {
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.card-container .options p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.card-container .options p:nth-child(2) {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.9rem;
+}
+
+#visible {
+  display: block;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.buttons .fav-button, .buttons .download-button, .buttons .fullview-button {
+  width: 32px;
+  height: 32px;
+  background-size: 100%;
+  border-radius: 6px;
+}
+
+.buttons .fav-button {
+  background-image: url("../assets/icon-fav.svg");
+  margin-right: 10px;
+}
+
+.buttons .fav-button:hover {
+  background-image: url("../assets/icon-fav-hover.svg");
+  background-size: 100%;
+}
+
+.buttons .fav-button:active {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+  background-color: white;
+}
+
+.buttons .fav-button-selected {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+}
+
+.buttons .fav-button-selected:hover {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 20px;
+}
+
+.buttons .download-button {
+  background-image: url("../assets/icon-download.svg");
+  border-radius: 6px;
+  border: 1px solid #9CAFC3;
+  margin-right: 10px;
+}
+
+.buttons .download-button:hover {
+  background-image: url("../assets/icon-download-hover.svg");
+}
+
+.buttons .fullview-button {
+  background-image: url("../assets/icon-max-normal.svg");
+  border-radius: 6px;
+  border: 1px solid #9CAFC3;
+}
+
+.buttons .fullview-button:hover {
+  background-image: url("../assets/icon-max-hover.svg");
 }
 /*# sourceMappingURL=1024px.css.map */

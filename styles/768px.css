@@ -1,3 +1,19 @@
+h1 {
+  font-size: 3rem;
+  line-height: 5rem;
+  max-width: 500px;
+}
+
+h2 {
+  font-size: 2.6rem;
+  line-height: 3rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+}
+
 nav .logo img {
   height: 5.9rem;
   width: 5.9rem;
@@ -56,22 +72,6 @@ nav .logo span {
   display: none;
 }
 
-h1 {
-  font-size: 3rem;
-  line-height: 5rem;
-  max-width: 500px;
-}
-
-h2 {
-  font-size: 2.6rem;
-  line-height: 3rem;
-}
-
-h3 {
-  font-size: 1.8rem;
-  line-height: 2.5rem;
-}
-
 .search {
   padding-top: 70px;
 }
@@ -94,7 +94,7 @@ h3 {
 }
 
 .trending p {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 2.1rem;
   margin-top: 12px;
   margin-bottom: 50px;
@@ -186,5 +186,9 @@ footer .icons-container {
 footer .copyright {
   position: absolute;
   right: 10%;
+}
+
+#empty h2 {
+  font-size: 1.8rem;
 }
 /*# sourceMappingURL=768px.css.map */

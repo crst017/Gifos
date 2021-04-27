@@ -155,11 +155,15 @@ function displaySearch () {
 function graphResults (result){
     
     for (const gif of result) {
-        let img = document.createElement("img");
+        let div = document.createElement('div');
+        div.classList.add('card-container');
+        let img = document.createElement('img');
         img.src = gif.src;
         img.gif = gif; // Adding the Gif object as a property to the HTML tag
-        gifsResultContainer.appendChild(img);
-        favListener(img) // Adding event to display full screen gif if the image is clicked 
+        div.appendChild(img);
+        gifsResultContainer.appendChild(div);
+        if ( screen.width < 1024 ) favListener(img) // Adding event to display full screen gif if the image is clicked
+        if ( screen.width > 1023 ) addMouseOver( img );
     }
 }
 

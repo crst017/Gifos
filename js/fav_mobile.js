@@ -32,7 +32,7 @@ function displayFav (event) {
     imgSelected.src = event.target.src;
     title.textContent = event.target.gif.title;
     username.textContent = event.target.gif.username;
-    
+
     favButton.classList.remove("fav-button-selected");
     let gifID = event.target.gif.id;
 
