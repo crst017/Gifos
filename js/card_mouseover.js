@@ -12,20 +12,18 @@ function addMouseOver ( element ) {
     let username = element.nextSibling.children[0].children[0];
     let title = element.nextSibling.children[0].children[1];
 
+    // Reeplaces the Object GIF data into the card
     title.textContent = element.gif.title;
     username.textContent = element.gif.username;
-    
-    // element.addEventListener( "mouseenter" , () => {
-    //     element.nextSibling.id = 'visible'
-    // })
-
-    // element.addEventListener( "mouseleave" , () => {
-    //     element.nextSibling.removeAttribute('id');
-    // })
 }
 
-// function mouseOverVisible() {
-//     let cardContainer = document.querySelector('.card-container');
-//     cardContainer.id = 'visible';
-// }
+function replaceMouseOver( element ) {
+
+    let username = element.nextSibling.children[0].children[0];
+    let title = element.nextSibling.children[0].children[1];
+
+    // Reeplaces the Object GIF data into the card
+    title.textContent = element.gif.title;
+    username.textContent = element.gif.username;
+}
 
