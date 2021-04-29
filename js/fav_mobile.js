@@ -8,15 +8,15 @@ for (const img of imgTrends) {
     img.addEventListener("click", (e) => {displayFav(e)});
 }
 
-
 // Display the favorites section with the selected Gif img, title and username
 const selected = document.querySelector(".selected");
 const favButton = document.querySelector(".fav-button");
 
-favButton.addEventListener("click" , changeGifStatus ); // Change Gif status property and set or remove GIF object from local storage
+favButton.addEventListener("click" , (e) => {changeGifStatus(e.target)} ); // Change Gif status property and set or remove GIF object from local storage
 
 let gifSelected;
-let statusGif = false;
+let statusGif;
+
 function displayFav (event) {
 
     let scroll = window.scrollY;
@@ -37,19 +37,19 @@ function displayFav (event) {
     let gifID = event.target.gif.id;
 
     // Looks if the selected gif is in the localStorage, returns a true or a false
-    // The statusGif is set to indicate if whenever the fav button is clicked it must be setted or removed into LocalStorage
-    statusGif = gifInLocalStorage( gifID );
+    // The statusGif is set to indicate if whenever the fav button is clicked it must be setted or removed into LocalStorage, used in changeGifStatus
+    statusGif = gifInLocalStorage( gifID , favButton );
 
     selected.classList.add("display-selected"); 
     document.body.classList.add("display-selected"); 
 
     configureDownload( event.target.gif ); 
-    // downloadGif( event.target.gif ); //Adds the event if the download button (anchor) is clicked, that downloads the gif
 }
 
-function gifInLocalStorage( gifID ) {
+function gifInLocalStorage( gifID , favButton ) {
 
     let statusStorage = false;
+    favButton.classList.remove("fav-button-selected");
     for (let index = 0; index < localStorage.length; index++) {
         
         if ( gifID == localStorage.key(index) ){
@@ -64,8 +64,16 @@ function gifInLocalStorage( gifID ) {
 }
 
 const closeSelected = document.querySelector(".close-selected");
-function changeGifStatus () {
-    
+function changeGifStatus ( favButton , event ) {
+
+    // Getting the gif status from the local storage using the event at fav button on desktop,
+    // on mobile all the data is set just clicking on the image to expand the gif.
+    try { 
+        gifSelected = event.path[3].firstChild.gif;
+        gifID = gifSelected.id
+        statusGif = gifInLocalStorage( gifID , favButton );
+    } catch {}
+
     statusGif = !statusGif;
     gifSelected.status = statusGif;
     let key = gifSelected.id;

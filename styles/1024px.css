@@ -118,6 +118,23 @@ h3 {
   cursor: pointer;
 }
 
+.buttons .fav-button:active {
+  background-size: 18px;
+}
+
+.buttons .fav-button-selected {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 18px;
+  background-color: white;
+  opacity: 0.7;
+}
+
+.buttons .fav-button-selected:hover {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 18px;
+  opacity: 1;
+}
+
 .buttons .fullview-button {
   background-image: url("../assets/icon-max-normal.svg");
   border-radius: 6px;

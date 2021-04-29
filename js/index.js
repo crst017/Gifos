@@ -162,7 +162,7 @@ function graphResults (result){
         img.gif = gif; // Adding the Gif object as a property to the HTML tag
         div.appendChild(img);
         gifsResultContainer.appendChild(div);
-        if ( screen.width < 1024 ) favListener(img) // Adding event to display full screen gif if the image is clicked
+        if ( screen.width < 1024 ) favListener( img ); // Adding event to display full screen gif if the image is clicked
         if ( screen.width > 1023 ) addMouseOver( img ); // Creates the card for desktop card hover ...
     }
 }
