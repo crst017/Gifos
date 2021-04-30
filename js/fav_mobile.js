@@ -104,7 +104,7 @@ async function configureDownload( gifObject ) {
     const file = await gifFetch.blob();
 
     downloadButton.download = `${gifObject.title}_${gifObject.id}`;
-    const urlBlob = URL.createObjectURL( file );
+    urlBlob = URL.createObjectURL( file );
 
     downloadButton.href = urlBlob;
 }

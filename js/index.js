@@ -165,6 +165,7 @@ function graphResults (result){
         if ( screen.width < 1024 ) favListener( img ); // Adding event to display full screen gif if the image is clicked
         if ( screen.width > 1023 ) addMouseOver( img ); // Creates the card for desktop card hover ...
     }
+    if ( screen.width > 1023 ) configureDownloadDesktop();
 }
 
 //Assigns the GIF Object to each image
@@ -178,6 +179,7 @@ function replaceResults (result) {
 
         if ( screen.width > 1023 ) replaceMouseOver( resultImages[index] ); // Creates the card for desktop card hover ...
     }
+    if ( screen.width > 1023 ) configureDownloadDesktop();
 }
 
 function displayHomeEmpty() {

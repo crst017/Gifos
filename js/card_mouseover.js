@@ -17,7 +17,7 @@ function addMouseOver ( element ) {
     title.textContent = element.gif.title;
     username.textContent = element.gif.username;
 
-    configureButtons( element )
+    configureButtons( element );
 }
 
 function replaceMouseOver( element ) {
@@ -31,31 +31,40 @@ function replaceMouseOver( element ) {
 
     let gifID = element.gif.id;
     let favButton = element.nextSibling.children[1].children[0];
-    statusGif = gifInLocalStorage( gifID , favButton );
-    console.log(statusGif)
+    statusGif = gifInLocalStorage( gifID , favButton );  
 }
-
 
 function configureButtons( element ) {
 
     let gifID = element.gif.id;
     let favButton = element.nextSibling.children[1].children[0];
+    let downloadButton = element.nextSibling.children[1].children[1];
+
     statusGif = gifInLocalStorage( gifID , favButton );
     // Change Gif status property and set or remove GIF object from local storage
     favButton.addEventListener("click" , (e) => changeGifStatus ( favButton , e )); 
 }
 
-async function configureDownloadOnHover( gifObject ) {
+let urlBlobDesktop = "";
+function configureDownloadDesktop() {
+    const cardsContainer = document.querySelectorAll('.card-container');
+    for (const card of cardsContainer) {
+        card.addEventListener( "mouseenter" , configureDownloadOnHover );
+        card.addEventListener( "mouseleave" , () => URL.revokeObjectURL(urlBlobDesktop) );
+    }
+}
 
-    // console.log(gifObject)
-    // const downloadButton = document.querySelector(".download-button");
-    // const gifFetch = await fetch( gifObject.downloadSrc );
-    // const file = await gifFetch.blob();
+async function configureDownloadOnHover( event ) {
 
-    // downloadButton.download = `${gifObject.title}_${gifObject.id}`;
-    // const urlBlob = URL.createObjectURL( file );
+    gifObject = event.target.children[0].gif
+    const downloadButton = event.target.children[1].children[1].children[1];
+    const gifFetch = await fetch( gifObject.downloadSrc );
+    const file = await gifFetch.blob();
 
-    // downloadButton.href = urlBlob;
+    downloadButton.download = `${gifObject.title}_${gifObject.id}`;
+    urlBlobDesktop = URL.createObjectURL( file );
+
+    downloadButton.href = urlBlobDesktop;
 }
 
 
