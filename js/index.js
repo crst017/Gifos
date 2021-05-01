@@ -155,17 +155,14 @@ function displaySearch () {
 function graphResults (result){
     
     for (const gif of result) {
-        let div = document.createElement('div');
-        div.classList.add('card-container');
-        let img = document.createElement('img');
-        img.src = gif.src;
-        img.gif = gif; // Adding the Gif object as a property to the HTML tag
-        div.appendChild(img);
-        gifsResultContainer.appendChild(div);
+        let img = createGifCard( gif )
         if ( screen.width < 1024 ) favListener( img ); // Adding event to display full screen gif if the image is clicked
         if ( screen.width > 1023 ) addMouseOver( img ); // Creates the card for desktop card hover ...
     }
-    if ( screen.width > 1023 ) configureDownloadDesktop();
+    if ( screen.width > 1023 ) {
+        let cardsContainer = document.querySelectorAll('.card-container');
+        configureDownloadDesktop( cardsContainer )
+    };
 }
 
 //Assigns the GIF Object to each image
@@ -179,7 +176,10 @@ function replaceResults (result) {
 
         if ( screen.width > 1023 ) replaceMouseOver( resultImages[index] ); // Creates the card for desktop card hover ...
     }
-    if ( screen.width > 1023 ) configureDownloadDesktop();
+    if ( screen.width > 1023 ) {
+        let cardsContainer = document.querySelectorAll('.card-container');
+        configureDownloadDesktop( cardsContainer )
+    };
 }
 
 function displayHomeEmpty() {
@@ -192,5 +192,26 @@ function displayHomeEmpty() {
     gifsResultContainer.appendChild(h2);
 
     paginationContainer.id = 'pagination-hide';
+}
+
+function createGifCard( gif ) {
+    let div = document.createElement('div');
+    div.classList.add('card-container');
+    let img = document.createElement('img');
+    img.src = gif.src;
+    img.gif = gif; // Adding the Gif object as a property to the HTML tag
+    div.appendChild(img);
+    gifsResultContainer.appendChild(div);
+
+    return img
+}
+
+const trendingGifsContainer = document.querySelector('.trending-gifs-container');
+
+function modifyGifCard ( img ) {
+    let div = document.createElement('div');
+    div.classList.add('trending-card-container');
+    div.appendChild(img);
+    trendingGifsContainer.appendChild(div);
 }
 

@@ -3,10 +3,19 @@ function favListener(element) {
     element.addEventListener("click", (e) => {displayFav(e)});
 }
 
-// Adding event to display full screen gif if any image in the trending section is selected
-for (const img of imgTrends) {
-    img.addEventListener("click", (e) => {displayFav(e)});
-}
+// Adding event to display full screen gif if any image in the trending section is selected or Creates the card for desktop card hover ...
+setTimeout( function() {  
+    for (const img of imgTrends) {
+        if ( screen.width < 1024 ) img.addEventListener("click", (e) => {displayFav(e)});
+        if ( screen.width > 1023 ) { 
+            modifyGifCard(img);
+            addMouseOver(img);
+            const trendingCardsContainer = document.querySelectorAll('.trending-card-container');
+            configureDownloadDesktop( trendingCardsContainer );
+        }
+    }
+}, 200);
+
 
 // Display the favorites section with the selected Gif img, title and username
 const selected = document.querySelector(".selected");
@@ -98,8 +107,8 @@ closeSelected.addEventListener("click", () => {
 });
 
 async function configureDownload( gifObject ) {
-
-    const downloadButton = document.querySelector(".download-button");
+    
+    const downloadButton = document.querySelector(".selected .download-button");
     const gifFetch = await fetch( gifObject.downloadSrc );
     const file = await gifFetch.blob();
 

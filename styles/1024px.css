@@ -26,9 +26,23 @@ h3 {
   font-size: 1.8rem;
 }
 
+.trending .trending-gifs-container {
+  overflow-x: hidden;
+}
+
+.trending .trending-gifs-container .trending-card-container {
+  margin: 0 20px;
+  width: 28%;
+  height: 230px;
+  max-width: 320px;
+  padding: 0;
+}
+
 .trending .trending-gifs-container img {
-  width: 65%;
-  height: 250px;
+  height: 230px;
+  max-width: 320px;
+  width: 100%;
+  margin: 0;
 }
 
 .results .gifs-result-container {
@@ -103,14 +117,14 @@ h3 {
   line-height: 1.9rem;
 }
 
-.buttons {
+.card-container .buttons {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: default;
 }
 
-.buttons .fav-button, .buttons .download-button, .buttons .fullview-button {
+.card-container .buttons .fav-button, .card-container .buttons .download-button, .card-container .buttons .fullview-button {
   width: 32px;
   height: 32px;
   margin: 0;
@@ -118,30 +132,117 @@ h3 {
   cursor: pointer;
 }
 
-.buttons .fav-button:active {
+.card-container .buttons .fav-button:active {
   background-size: 18px;
 }
 
-.buttons .fav-button-selected {
+.card-container .buttons .fav-button-selected {
   background-image: url("../assets/icon-fav-active.svg");
   background-size: 18px;
   background-color: white;
   opacity: 0.7;
 }
 
-.buttons .fav-button-selected:hover {
+.card-container .buttons .fav-button-selected:hover {
   background-image: url("../assets/icon-fav-active.svg");
   background-size: 18px;
   opacity: 1;
 }
 
-.buttons .fullview-button {
+.card-container .buttons .fullview-button {
   background-image: url("../assets/icon-max-normal.svg");
   border-radius: 6px;
   border: 1px solid #9CAFC3;
 }
 
-.buttons .fullview-button:hover {
+.card-container .buttons .fullview-button:hover {
+  background-image: url("../assets/icon-max-hover.svg");
+}
+
+.trending-card-container {
+  position: relative;
+}
+
+.trending-card-container:hover > .options {
+  display: block;
+}
+
+.trending-card-container .options {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  background-color: #572EE599;
+}
+
+.trending-card-container .options .text {
+  position: absolute;
+  bottom: 20px;
+  left: 12px;
+}
+
+.trending-card-container .options p {
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.trending-card-container .options p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.trending-card-container .options p:nth-child(2) {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.9rem;
+}
+
+.trending-card-container .buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: default;
+}
+
+.trending-card-container .buttons .fav-button, .trending-card-container .buttons .download-button, .trending-card-container .buttons .fullview-button {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.trending-card-container .buttons .fav-button:active {
+  background-size: 18px;
+}
+
+.trending-card-container .buttons .fav-button-selected {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 18px;
+  background-color: white;
+  opacity: 0.7;
+}
+
+.trending-card-container .buttons .fav-button-selected:hover {
+  background-image: url("../assets/icon-fav-active.svg");
+  background-size: 18px;
+  opacity: 1;
+}
+
+.trending-card-container .buttons .fullview-button {
+  background-image: url("../assets/icon-max-normal.svg");
+  border-radius: 6px;
+  border: 1px solid #9CAFC3;
+}
+
+.trending-card-container .buttons .fullview-button:hover {
   background-image: url("../assets/icon-max-hover.svg");
 }
 /*# sourceMappingURL=1024px.css.map */

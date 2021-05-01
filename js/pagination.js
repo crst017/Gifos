@@ -6,10 +6,10 @@ for (const item of itemsPagination) {
     item.addEventListener("click", (e) => {
 
         let rPagination = pagination(item.textContent);    
-        pageNumber = item.textContent  
+        pageNumber = item.textContent;
         switch (view) {
             case "Favoritos":
-                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                pageNumber == (pages - 1) ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
                 break;
             case "Mis GIFOS":
                 break;
@@ -30,9 +30,10 @@ paginationPrev.addEventListener ("click" , (e) => {
         let rPagination = pagination(pageNumber - 1); 
         offset = rPagination[0];
         pageNumber = rPagination[1];
+        console.log(pageNumber, pages)
         switch (view) {
             case "Favoritos": 
-                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                pageNumber == (pages - 1) ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
                 break;
             case "Mis GIFOS":
                 break;
@@ -50,13 +51,14 @@ paginationNext.addEventListener ("click" , (e) => {
             pageNumber = item.textContent;
         }
     }
+    
     if (pageNumber != pages) {
         let rPagination = pagination(Number(pageNumber) + Number(1)); 
         offset = rPagination[0];
         pageNumber = rPagination[1];
         switch (view) {
             case "Favoritos": 
-                pageNumber == 1 ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );
+                replaceGifs( gifsPages , pageNumber );
                 break;
             case "Mis GIFOS":
                 break;
@@ -69,7 +71,6 @@ paginationNext.addEventListener ("click" , (e) => {
 
 let dark = "";
 function pagination(pageNumber) {
-
     pageNumber = parseInt(pageNumber);
     let offset = 0;
     dark = night_mode ? "dark-selected" : "";
@@ -91,9 +92,15 @@ function pagination(pageNumber) {
             itemsPagination[3].id = dark;
             break;
         case pages:
-            setNumeration( pages - 4 );
-            itemsPagination[4].classList.add("li-selected");
-            itemsPagination[4].id = dark;
+            if  ( pages < 5 ) { 
+                setNumeration ( 1 , pages );
+                itemsPagination[pages-1].classList.add("li-selected");
+                itemsPagination[pages-1].id = dark;
+            } else {
+                setNumeration( pages - 4 );
+                itemsPagination[4].classList.add("li-selected");
+                itemsPagination[4].id = dark;
+            }
             break;
         default:
             setNumeration( pageNumber - 2 );
@@ -107,8 +114,9 @@ function pagination(pageNumber) {
 }        
 
 // Assigns the numbers for the correct numeration
-function setNumeration( firstNumber ){
-    for (let index = 0; index < itemsPagination.length; index++){
+function setNumeration( firstNumber , pagesNumber ){
+    if (pagesNumber) { pagesNumber = pagesNumber } else { pagesNumber = 5}
+    for (let index = 0; index < pagesNumber; index++){
         itemsPagination[index].classList.remove("li-selected"); // Clear background color for all the numbers - "selection"
         itemsPagination[index].removeAttribute('id'); // Clear background color for all the numbers - "selection"
         itemsPagination[index].textContent = index + firstNumber ;

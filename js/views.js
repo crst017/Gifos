@@ -24,11 +24,11 @@ function displayFavorites (e) {
         case "Favoritos":
             removeAllChildNodes(gifsResultContainer);
             searchFavorites();
-            displayGifs( view , "fav-gif-icon" , "my-gif-icon" ); 
+            displayGifs( view , "fav-gif-icon" , "my-gif-icon" ); // Just graphics 
             break;
         case "Mis GIFOS":
             removeAllChildNodes(gifsResultContainer);
-            displayGifs( view , "my-gif-icon" , "fav-gif-icon" );
+            displayGifs( view , "my-gif-icon" , "fav-gif-icon" ); // Just graphics 
             break;
         case "GIFOS":
             goHome();
@@ -56,7 +56,6 @@ function displayGifs( view , addClass , removeClass ) {
 function searchFavorites() {
 
     let localStorageGifs = [];
-
     for (let index = 0; index < localStorage.length; index++) {
 
         const key = localStorage.key(index);
@@ -65,13 +64,12 @@ function searchFavorites() {
         try { gif = JSON.parse(gif) } 
         catch (error) { gif = null }
         
-        if (gif.src) localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage
+        if (gif.src) localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage, avoids including the night mode key
     }
    
     if ( localStorageGifs.length == 0) {
         displayFavEmpty()
     } else {
-
         pages = Math.ceil( localStorageGifs.length / 12); // Sets the global variable pages for pagination
         gifsPages = createGifsPages( localStorageGifs , 1); // Creates an array, each position is a 12 Gifs page
         pagination(1);
@@ -103,33 +101,39 @@ function goHome() {
 function createGifsElement ( gifPage , actualPage ) {
     removeAllChildNodes(gifsResultContainer);
     for (const gif of gifPage[actualPage - 1]) { //page number is a global variable that indicates the current page
-        let img = document.createElement("img");
-        img.src = gif.src;
-        img.gif = gif; // Adding the Gif object as a property to the HTML tag
-        gifsResultContainer.appendChild(img);
-        favListener(img); // Adding event to display full screen gif if the image is clicked
+        let img = createGifCard( gif )
+        if ( screen.width < 1024 ) favListener( img ); // Adding event to display full screen gif if the image is clicked
+        if ( screen.width > 1023 ) addMouseOver( img ); // Creates the card for desktop card hover ...
     }
+    if ( screen.width > 1023 ) {
+        let cardsContainer = document.querySelectorAll('.card-container');
+        configureDownloadDesktop( cardsContainer )
+    };
 }
 
 function replaceGifs ( gifPage , actualPage ) {
-
+    // console.log(gifPage,actualPage,"pagina actual")
     let page = gifPage[actualPage - 1];
     let resultImages = document.querySelectorAll(".gifs-result-container img");
-
+    // console.log(page,"page")
     for (let index = 0; index < 12; index++) {
 
         if (page[index]) {
             resultImages[index].src = page[index].src;
             resultImages[index].gif = page[index];
+            if ( screen.width > 1023 ) replaceMouseOver( resultImages[index] ); // Creates the card for desktop card hover ...
         } else {
-            try { resultImages[index].remove() } 
-            catch { break }
+            resultImages[index].parentNode.remove()
         }
     }
+    if ( screen.width > 1023 ) {
+        let cardsContainer = document.querySelectorAll('.card-container');
+        configureDownloadDesktop( cardsContainer )
+    };
 }
 
+// Creates an array, each position is a 12 Gifs page. Receives an array of GIF Objects
 function createGifsPages( localStorageGifs ) {
-
     let gifPagesArray = [];
     for (let index = 0; index < pages; index++) {
 

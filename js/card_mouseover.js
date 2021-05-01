@@ -17,7 +17,7 @@ function addMouseOver ( element ) {
     title.textContent = element.gif.title;
     username.textContent = element.gif.username;
 
-    configureButtons( element );
+    configureFavButton( element );
 }
 
 function replaceMouseOver( element ) {
@@ -34,23 +34,23 @@ function replaceMouseOver( element ) {
     statusGif = gifInLocalStorage( gifID , favButton );  
 }
 
-function configureButtons( element ) {
+function configureFavButton( element ) {
 
     let gifID = element.gif.id;
     let favButton = element.nextSibling.children[1].children[0];
-    let downloadButton = element.nextSibling.children[1].children[1];
-
     statusGif = gifInLocalStorage( gifID , favButton );
     // Change Gif status property and set or remove GIF object from local storage
     favButton.addEventListener("click" , (e) => changeGifStatus ( favButton , e )); 
 }
 
 let urlBlobDesktop = "";
-function configureDownloadDesktop() {
-    const cardsContainer = document.querySelectorAll('.card-container');
+function configureDownloadDesktop( cardsContainer ) {
     for (const card of cardsContainer) {
-        card.addEventListener( "mouseenter" , configureDownloadOnHover );
-        card.addEventListener( "mouseleave" , () => URL.revokeObjectURL(urlBlobDesktop) );
+        let button = card.children[1].children[1].children[2];
+        let img = card.children[0];
+        button.addEventListener( "click" , (e) => {displayFavDesktop( img )}) // Expands GIF, configures download when expanded and removes blob on closing
+        card.addEventListener( "mouseenter" , configureDownloadOnHover ); // Configures download on "hover" (not expanded)
+        card.addEventListener( "mouseleave" , () => URL.revokeObjectURL(urlBlobDesktop) ); // Removes blob on mouseleave
     }
 }
 
@@ -58,13 +58,45 @@ async function configureDownloadOnHover( event ) {
 
     gifObject = event.target.children[0].gif
     const downloadButton = event.target.children[1].children[1].children[1];
+    let favButton = event.target.children[1].children[1].children[0];
+    statusGif = gifInLocalStorage( gifObject.id , favButton );
+
     const gifFetch = await fetch( gifObject.downloadSrc );
     const file = await gifFetch.blob();
-
     downloadButton.download = `${gifObject.title}_${gifObject.id}`;
     urlBlobDesktop = URL.createObjectURL( file );
 
     downloadButton.href = urlBlobDesktop;
+}
+
+function displayFavDesktop( img ) {
+    
+    let scroll = window.scrollY;
+    selected.style.top = `${scroll}px`; 
+    window.scrollTo(0,scroll);
+    gifSelected = img.gif;
+    
+    // Assign the GIF Object properties to the HTML tag, text content attribute
+    let imgSelected = document.querySelector(".selected img");
+    let username = document.querySelector(".selected .username");
+    let title = document.querySelector(".selected .title");
+    
+    imgSelected.src = img.gif.src;
+    title.textContent = img.gif.title;
+    username.textContent = img.gif.username;
+
+    let favButton = document.querySelector(".selected .fav-button");
+    favButton.classList.remove("fav-button-selected");
+    let gifID = img.gif.id;
+
+    // // Looks if the selected gif is in the localStorage, returns a true or a false
+    // // The statusGif is set to indicate if whenever the fav button is clicked it must be setted or removed into LocalStorage, used in changeGifStatus
+    statusGif = gifInLocalStorage( gifID , favButton );
+
+    selected.classList.add("display-selected"); 
+    document.body.classList.add("display-selected"); 
+
+    configureDownload( gifSelected );
 }
 
 

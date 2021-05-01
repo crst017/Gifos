@@ -89,18 +89,18 @@ nav .logo span {
 
 .trending {
   padding-top: 70px;
-  padding-bottom: 130px;
+  padding-bottom: 100px;
   height: auto;
 }
 
-.trending p {
+.trending > p {
   font-size: 1.8rem;
   line-height: 2.1rem;
   margin-top: 12px;
   margin-bottom: 50px;
 }
 
-.trending p::after {
+.trending > p::after {
   content: "GIFOS de nuestra comunidad.";
   white-space: normal;
 }
@@ -109,12 +109,16 @@ nav .logo span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow-x: hidden;
 }
 
 .trending .trending-gifs-container img {
-  width: 65%;
+  min-width: 220px;
+  width: 28%;
   height: 180px;
-  padding: 0 15px;
+  max-width: 270px;
+  padding: 0;
+  margin: 0 2%;
 }
 
 .results {

@@ -380,7 +380,7 @@ h3 {
     padding-top: 46px;
     padding-bottom: 82px;
 
-    p { 
+    & > p { 
         margin-top: 7px;
         margin-bottom: 32px;
         font-family: $roboto;
@@ -403,9 +403,9 @@ h3 {
 
         img {
             width: 65%;
-            min-width: 250px;
+            min-width: 270px;
             max-width: 350px;
-            height: 190px;
+            height: 200px;
             padding: 0 11px;
             scroll-snap-align: center;
         }
