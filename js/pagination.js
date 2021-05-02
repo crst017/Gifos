@@ -30,7 +30,6 @@ paginationPrev.addEventListener ("click" , (e) => {
         let rPagination = pagination(pageNumber - 1); 
         offset = rPagination[0];
         pageNumber = rPagination[1];
-        console.log(pageNumber, pages)
         switch (view) {
             case "Favoritos": 
                 pageNumber == (pages - 1) ? createGifsElement ( gifsPages , pageNumber ) : replaceGifs( gifsPages , pageNumber );

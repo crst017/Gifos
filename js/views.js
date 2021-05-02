@@ -112,10 +112,10 @@ function createGifsElement ( gifPage , actualPage ) {
 }
 
 function replaceGifs ( gifPage , actualPage ) {
-    // console.log(gifPage,actualPage,"pagina actual")
+
     let page = gifPage[actualPage - 1];
     let resultImages = document.querySelectorAll(".gifs-result-container img");
-    // console.log(page,"page")
+
     for (let index = 0; index < 12; index++) {
 
         if (page[index]) {

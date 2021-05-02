@@ -11,7 +11,8 @@ const searchContainer = document.querySelector('.search-container');
 const iconSearch = document.querySelector('.search-button');
 const burgerLogo = document.querySelector('.burger-logo');
 const menu = document.querySelector('.menu ul');
-const firstLi = document.querySelector('.menu ul li');
+const menuLi = document.querySelectorAll('.menu ul li');
+const firstLi = document.querySelector('.menu ul li'); // Just the first 
 
 let night_mode = localStorage.getItem( "night" );
 
@@ -52,6 +53,7 @@ checkBox.addEventListener( "click" , () => {
         openBurger(checkBox.checked)
     } 
 });
+
 ul.addEventListener( "click" , ()=> {
     if ( night_mode ) {
         checkBox.checked = false;
@@ -68,9 +70,9 @@ function applyNight() {
     selectedSection.id = 'dark'; 
     inputSearch.id = 'dark';
     gifosLogo.id = 'dark';
-    for (const p of pArray) p.id = 'dark';
-
-    menu.id = 'dark-black';
+    for (const p of pArray) screen.width < 1023 ? p.id = 'dark' : p.removeAttribute('id');
+    for (const li of menuLi) if (screen.width > 1023) li.id = "dark";
+    screen.width < 1023 ? menu.id = 'dark-black' : menu.id = 'dark';
     pTrending.id = 'dark-trending';
     trendingSection.id = 'dark-trending';
     searchContainer.id = 'border-white';
@@ -90,7 +92,7 @@ function applyDay() {
     inputSearch.removeAttribute('id');
     gifosLogo.removeAttribute('id');
     for (const p of pArray) p.removeAttribute('id');
-
+    for (const li of menuLi) if (screen.width > 1023) li.removeAttribute('id');
     menu.removeAttribute('id');
     pTrending.removeAttribute('id');
     trendingSection.removeAttribute('id');
