@@ -13,7 +13,7 @@ const burgerLogo = document.querySelector('.burger-logo');
 const menu = document.querySelector('.menu ul');
 const menuLi = document.querySelectorAll('.menu ul li');
 const firstLi = document.querySelector('.menu ul li'); // Just the first 
-
+const favButtonDark = document.querySelector('.selected .options .fav-button');
 let night_mode = localStorage.getItem( "night" );
 
 if ( night_mode ) {
@@ -72,6 +72,7 @@ function applyNight() {
     gifosLogo.id = 'dark';
     for (const p of pArray) screen.width < 1023 ? p.id = 'dark' : p.removeAttribute('id');
     for (const li of menuLi) if (screen.width > 1023) li.id = "dark";
+
     screen.width < 1023 ? menu.id = 'dark-black' : menu.id = 'dark';
     pTrending.id = 'dark-trending';
     trendingSection.id = 'dark-trending';
@@ -80,6 +81,8 @@ function applyNight() {
     iconSearch.id = 'icon-search';
     burgerLogo.id = 'icon-burger';
     closeSelected.id = 'icon-close';
+
+    favButtonDark.id = 'white-bg';
 }
 
 function applyDay() {
@@ -101,6 +104,8 @@ function applyDay() {
     iconSearch.removeAttribute('id');
     burgerLogo.removeAttribute('id');
     closeSelected.removeAttribute('id');
+
+    favButtonDark.removeAttribute('id');
     
 }
 

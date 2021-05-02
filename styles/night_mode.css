@@ -34,4 +34,13 @@
   background-color: white;
   color: black;
 }
+
+#white-bg {
+  background-color: white;
+  opacity: 0.7;
+}
+
+#white-bg:hover {
+  opacity: 1;
+}
 /*# sourceMappingURL=night_mode.css.map */
