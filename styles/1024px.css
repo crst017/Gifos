@@ -48,7 +48,7 @@ h3 {
 .results .gifs-result-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (280px)[3];
+  -ms-grid-columns: (280px);
       grid-template-columns: repeat(3, 280px);
   -ms-grid-rows: 220px;
       grid-template-rows: 220px;
