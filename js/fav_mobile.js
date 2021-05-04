@@ -14,7 +14,7 @@ setTimeout( function() {
             configureDownloadDesktop( trendingCardsContainer );
         }
     }
-}, 200);
+}, 200); // Time out to add the events once the images in trend section were fetched and created
 
 
 // Display the favorites section with the selected Gif img, title and username
@@ -104,6 +104,7 @@ closeSelected.addEventListener("click", () => {
     selected.classList.remove("display-selected");
     document.body.classList.remove("display-selected");
     URL.revokeObjectURL(urlBlob); // Removes blob from memory
+    navbar.classList.remove('hide'); // Shows the sticky navbar once the expanded GIF is closed.
 });
 
 async function configureDownload( gifObject ) {

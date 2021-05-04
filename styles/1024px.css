@@ -13,6 +13,10 @@ h3 {
   line-height: 2.5rem;
 }
 
+.search {
+  margin-top: 100px;
+}
+
 .search p {
   font-size: 1.6rem;
 }
@@ -48,7 +52,7 @@ h3 {
 .results .gifs-result-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (280px);
+  -ms-grid-columns: (280px)[3];
       grid-template-columns: repeat(3, 280px);
   -ms-grid-rows: 220px;
       grid-template-rows: 220px;
@@ -233,7 +237,7 @@ h3 {
 .trending-card-container .buttons .fav-button-selected:hover {
   background-image: url("../assets/icon-fav-active.svg");
   background-size: 18px;
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .trending-card-container .buttons .fullview-button {
@@ -244,5 +248,75 @@ h3 {
 
 .trending-card-container .buttons .fullview-button:hover {
   background-image: url("../assets/icon-max-hover.svg");
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menu .search-container {
+  width: 30%;
+  height: 50px;
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.menu .search-container .input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu .search-container input {
+  display: inline-block;
+  width: auto;
+  cursor: auto;
+  padding: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.menu ul li:last-child {
+  display: list-item;
+  width: 54px;
+  height: 54px;
+  background-image: url("../assets/button-crear-gifo.svg");
+}
+
+.menu ul li:last-child:hover {
+  background-image: url("../assets/crear-gifo-hover.svg");
+}
+
+.menu ul li:last-child:active {
+  background-image: url("../assets/crear-gifo-active.svg");
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+nav.hide {
+  position: relative;
+}
+
+.sticky {
+  -webkit-box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55);
+          box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55);
 }
 /*# sourceMappingURL=1024px.css.map */

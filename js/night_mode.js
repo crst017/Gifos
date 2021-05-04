@@ -1,19 +1,18 @@
-const nav = document.querySelector('nav');
 const footer = document.querySelector('footer');
 const searchSection = document.querySelector('.search');
 const selectedSection = document.querySelector('.selected');
 const trendingSection = document.querySelector('.trending');
-const inputSearch = document.querySelector('.input-search');
-const pTrending = document.querySelector('.trending p');
-const pArray = document.querySelectorAll('p');
+const resultsSection = document.querySelector('.results');
 const gifosLogo = document.querySelector('.logo span');
 const searchContainer = document.querySelector('.search-container');
 const iconSearch = document.querySelector('.search-button');
-const burgerLogo = document.querySelector('.burger-logo');
-const menu = document.querySelector('.menu ul');
-const menuLi = document.querySelectorAll('.menu ul li');
+const menu = document.querySelector('.menu');
 const firstLi = document.querySelector('.menu ul li'); // Just the first 
 const favButtonDark = document.querySelector('.selected .options .fav-button');
+const newGif = document.querySelector('.new-gif');
+const navbar = document.querySelector("nav");
+const menuItems = document.querySelector(".menu-items");
+
 let night_mode = localStorage.getItem( "night" );
 
 if ( night_mode ) {
@@ -64,49 +63,30 @@ ul.addEventListener( "click" , ()=> {
 function applyNight() {
 
     firstLi.textContent = "Modo Diurno";
-    nav.id = 'dark';
-    footer.id = 'dark';
-    searchSection.id = 'dark';
-    selectedSection.id = 'dark'; 
-    inputSearch.id = 'dark';
-    gifosLogo.id = 'dark';
-    for (const p of pArray) screen.width < 1023 ? p.id = 'dark' : p.removeAttribute('id');
-    for (const li of menuLi) if (screen.width > 1023) li.id = "dark";
+    navbar.classList.add('night');
+    gifosLogo.classList.add('night');
+    screen.width > 767 ? menuItems.classList.add('night') : menuItems.classList.remove('night');
+    searchSection.classList.add('night');
+    trendingSection.classList.add('night');
+    selectedSection.classList.add('night');
+    resultsSection.classList.add('night');
+    footer.classList.add('night');
 
-    screen.width < 1023 ? menu.id = 'dark-black' : menu.id = 'dark';
-    pTrending.id = 'dark-trending';
-    trendingSection.id = 'dark-trending';
-    searchContainer.id = 'border-white';
-
-    iconSearch.id = 'icon-search';
-    burgerLogo.id = 'icon-burger';
-    closeSelected.id = 'icon-close';
-
-    favButtonDark.id = 'white-bg';
+    newGif.id = 'icon-new-gif'
 }
 
 function applyDay() {
 
     firstLi.textContent = "Modo Nocturno";
-    nav.removeAttribute('id');
-    footer.removeAttribute('id');
-    searchSection.removeAttribute('id');
-    selectedSection.removeAttribute('id');
-    inputSearch.removeAttribute('id');
-    gifosLogo.removeAttribute('id');
-    for (const p of pArray) p.removeAttribute('id');
-    for (const li of menuLi) if (screen.width > 1023) li.removeAttribute('id');
-    menu.removeAttribute('id');
-    pTrending.removeAttribute('id');
-    trendingSection.removeAttribute('id');
-    searchContainer.removeAttribute('id');
+    navbar.classList.remove('night');
+    gifosLogo.classList.remove('night');
+    searchSection.classList.remove('night');
+    trendingSection.classList.remove('night');
+    selectedSection.classList.remove('night');
+    resultsSection.classList.remove('night');
+    footer.classList.remove('night');
 
-    iconSearch.removeAttribute('id');
-    burgerLogo.removeAttribute('id');
-    closeSelected.removeAttribute('id');
-
-    favButtonDark.removeAttribute('id');
-    
+    newGif.removeAttribute('id');
 }
 
 //Changes the icon in night mode clicking on burger menu

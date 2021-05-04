@@ -57,18 +57,22 @@ nav .logo span {
   color: #572EE5;
   font-size: 1.3rem;
   text-transform: uppercase;
-  margin-left: 5rem;
+  margin-left: 45px;
 }
 
 .menu ul li::after {
   content: none;
 }
 
+.menu ul li:first-child {
+  margin-left: 0;
+}
+
 .menu .burger-logo {
   display: none;
 }
 
-.menu input {
+.menu .checkbox {
   display: none;
 }
 

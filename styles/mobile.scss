@@ -82,7 +82,8 @@ nav {
 .menu {
     display: flex;
     justify-content: center;
-
+    background-color: white;
+    
     .burger-logo {
         width: 1.5rem;
         height: 1.5rem;
@@ -90,7 +91,7 @@ nav {
         @extend %bg-icons;
     }
 
-    input {
+    .checkbox {
         width: 2.4rem;
         height: 2.4rem;
         transform: translate(1.9rem , -0.45rem);
@@ -139,6 +140,13 @@ nav {
                 width: 40px;
                 border-bottom: 1px solid white;
             }
+
+            &:last-child {
+                display: none;
+                width: 54px;
+                height: 54px;
+                background-image: url('/assets/button-crear-gifo.svg');
+            }
         }
     }
 }
@@ -172,82 +180,6 @@ h3 {
         display: block;
         margin: 0 auto;
     }
-    
-    .search-container {
-        width: 88%;
-        height: auto;
-        max-width: 550px;
-        border-radius: 25px;
-        padding: 0 20px;
-        margin: 0 auto;
-        border: solid 1px $purple;
-    }
-
-    .input-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 5rem;
-        position: relative;
-
-        input {
-            font-family: $roboto;
-            font-size: 1.6rem;
-            font-weight: 400;
-            line-height: 1.9rem;
-            padding-left: 35px;
-            border: none;
-            flex-grow: 1;
-            outline: none;
-        }
-        
-        .search-button {
-            @extend %bg-button;
-            background-image: url('../assets/icon-search.svg');
-            @extend %bg-icons;
-        }
-
-
-        .search-button-close {
-            background-size: 15px;
-            background-image: url('../assets/close.svg');
-        }
-
-        .autocomplete-divisor {
-            display: none;
-            position: absolute;
-            left: 50%;
-            bottom: 1px;
-            transform: translateX(-50%);
-            width: 100%;
-            border-bottom: 1px solid $gray;
-        }
-    }
-
-    .ul-autocomplete {
-        width: 100%;
-        margin: 0 auto;
-        list-style: none;
-        text-align: left;
-
-        .li-autocomplete {
-            font-family: $roboto;
-            font-size: 1.6rem;
-            font-weight: 400;
-            line-height: 1.9rem;
-            color: $gray;
-            padding: 5px 35px;
-            cursor: pointer;
-
-            &:nth-child(1) {
-                padding-top: 14px
-            }
-
-            &:nth-last-child(1) {
-                padding-bottom: 18px;
-            }
-        }
-    }
 
     h3 {
         margin-top: 31px;
@@ -266,6 +198,82 @@ h3 {
             cursor: pointer;
         }
     }   
+}
+
+.search-container {
+    width: 88%;
+    height: auto;
+    max-width: 550px;
+    border-radius: 25px;
+    padding: 0 20px;
+    margin: 0 auto;
+    border: solid 1px $purple;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+    position: relative;
+
+    input {
+        font-family: $roboto;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.9rem;
+        padding-left: 35px;
+        border: none;
+        flex-grow: 1;
+        outline: none;
+    }
+    
+    .search-button {
+        @extend %bg-button;
+        background-image: url('../assets/icon-search.svg');
+        @extend %bg-icons;
+    }
+
+
+    .search-button-close {
+        background-size: 15px;
+        background-image: url('../assets/close.svg');
+    }
+
+    .autocomplete-divisor {
+        display: none;
+        position: absolute;
+        left: 50%;
+        bottom: 1px;
+        transform: translateX(-50%);
+        width: 100%;
+        border-bottom: 1px solid $gray;
+    }
+}
+
+.ul-autocomplete {
+    width: 100%;
+    margin: 0 auto;
+    list-style: none;
+    text-align: left;
+
+    .li-autocomplete {
+        font-family: $roboto;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.9rem;
+        color: $gray;
+        padding: 5px 35px;
+        cursor: pointer;
+
+        &:nth-child(1) {
+            padding-top: 14px
+        }
+
+        &:nth-last-child(1) {
+            padding-bottom: 18px;
+        }
+    }
 }
 
 
@@ -555,10 +563,12 @@ footer {
     .fav-button-selected {
         background-image: url("../assets/icon-fav-active.svg");
         background-size: 20px;
+        background-color: #FFFFFFB3;
 
         &:hover {
             background-image: url("../assets/icon-fav-active.svg");
             background-size: 20px;
+            background-color: white;
         }
     }
 

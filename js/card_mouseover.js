@@ -96,6 +96,7 @@ function displayFavDesktop( img ) {
     selected.classList.add("display-selected"); 
     document.body.classList.add("display-selected"); 
 
+    navbar.classList.add('hide');
     configureDownload( gifSelected );
 }
 

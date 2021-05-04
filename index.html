@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/mobile.css"> 
-    <link rel="stylesheet" href="./styles/night_mode.css"> 
     <link rel="stylesheet" href="./styles/480px.css" media="(min-width: 480px)"> 
     <link rel="stylesheet" href="./styles/768px.css" media="(min-width: 768px)"> 
     <link rel="stylesheet" href="./styles/1024px.css" media="(min-width: 1024px)"> 
     <link rel="stylesheet" href="./styles/1200px.css" media="(min-width: 1200px)"> 
+    <link rel="stylesheet" href="./styles/night_mode.css"> 
 </head>
 <body>
     <header>
@@ -25,10 +25,11 @@
             <div class="menu">
                 <input type="checkbox" class="checkbox">
                 <span class="burger-logo"></span>
-                <ul>
+                <ul class="menu-items">
                     <li class="night-mode">Modo Nocturno</li>
                     <li class="favorites">Favoritos</li>
                     <li class="my-gifs">Mis GIFOS</li>
+                    <li class="new-gif"></li>
                 </ul>
             </div>
         </nav>
@@ -111,5 +112,7 @@
     <script src="./js/views.js"></script>
     <script src="./js/night_mode.js"></script>
     <script src="./js/card_mouseover.js"></script>
+    <script src="./js/sticky_navbar.js"></script>
 </body>
 </html>
+
