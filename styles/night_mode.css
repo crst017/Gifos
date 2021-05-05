@@ -1,5 +1,5 @@
 #icon-close {
-  background-image: url(../assets/close-modo-noct.svg);
+  background-image: url("../assets/close-modo-noct.svg");
 }
 
 #white-bg {
@@ -17,7 +17,7 @@
 }
 
 #icon-new-gif {
-  background-image: url(../assets/crear-gifo-modo-noc.svg);
+  background-image: url("../assets/crear-gifo-modo-noc.svg");
 }
 
 #icon-new-gif:hover {
@@ -52,7 +52,11 @@
 }
 
 .night .menu .burger-logo {
-  background-image: url(../assets/burger-modo-noct.svg);
+  background-image: url("../assets/burger-modo-noct.svg");
+}
+
+.night .menu .checkbox:checked ~ .burger-logo {
+  background-image: url("../assets/close-modo-noct.svg");
 }
 
 .night .menu .menu-items {
@@ -72,7 +76,11 @@
 }
 
 .night .search-container .search-button {
-  background-image: url(../assets/icon-search-modo-noct.svg);
+  background-image: url("../assets/icon-search-modo-noct.svg");
+}
+
+.night .search-container .search-button-close {
+  background-image: url("../assets/close-modo-noct.svg");
 }
 
 .night .results {

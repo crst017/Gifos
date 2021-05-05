@@ -14,7 +14,7 @@ setTimeout( function() {
             configureDownloadDesktop( trendingCardsContainer );
         }
     }
-}, 200); // Time out to add the events once the images in trend section were fetched and created
+}, 300); // Time out to add the events once the images in trend section were fetched and created
 
 
 // Display the favorites section with the selected Gif img, title and username

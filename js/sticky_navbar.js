@@ -17,6 +17,14 @@ if (screen.width > 1023) {
 
     const searchNav = document.querySelector('.search-container').cloneNode(true);
     searchNav.children[1].remove();
-    menu.insertBefore( searchNav , menu.firstChild); 
+    menu.insertBefore( searchNav , menu.firstChild);
+    
+    const inputNav = document.querySelector(".input-search");
+
+    inputNav.addEventListener("keyup", (e) => {
+        if (e.key == "Enter") { 
+            search(e);
+        } 
+    });
     
 } 

@@ -12,6 +12,7 @@ const favButtonDark = document.querySelector('.selected .options .fav-button');
 const newGif = document.querySelector('.new-gif');
 const navbar = document.querySelector("nav");
 const menuItems = document.querySelector(".menu-items");
+const burgerLogo = document.querySelector('.burger-logo');
 
 let night_mode = localStorage.getItem( "night" );
 
@@ -26,9 +27,7 @@ if ( night_mode ) {
             night_mode = false;
             break;
     }
-} 
-else {
-    console.log("entre false")
+} else {
     localStorage.setItem( "night" , false );
     night_mode = false;
 }
@@ -45,20 +44,7 @@ function changeMode( view ) {
     else {
         applyDay();
     }
-}
-
-checkBox.addEventListener( "click" , () => {
-    if ( night_mode ) {
-        openBurger(checkBox.checked)
-    } 
-});
-
-ul.addEventListener( "click" , ()=> {
-    if ( night_mode ) {
-        checkBox.checked = false;
-        openBurger(checkBox.checked)
-    } 
-}) 
+} 
 
 function applyNight() {
 
@@ -72,7 +58,7 @@ function applyNight() {
     resultsSection.classList.add('night');
     footer.classList.add('night');
 
-    newGif.id = 'icon-new-gif'
+    newGif.id = 'icon-new-gif';
 }
 
 function applyDay() {
@@ -87,9 +73,4 @@ function applyDay() {
     footer.classList.remove('night');
 
     newGif.removeAttribute('id');
-}
-
-//Changes the icon in night mode clicking on burger menu
-function openBurger( status ) {
-    status ? burgerLogo.id = 'icon-close' : burgerLogo.id = 'icon-burger'
 }

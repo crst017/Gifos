@@ -2,12 +2,13 @@ const pTrends = document.querySelector(".trends");
 const spanTrends = document.querySelectorAll(".trends span");
 const h2SearchedTerm = document.querySelector(".searched-term");
 const imgTrends = document.querySelectorAll(".trending-gif");
-const input = document.querySelector(".input-search");
 const ulAutocomplete = document.querySelector(".ul-autocomplete");
 const spanAutocompleteDivisor = document.querySelector(".autocomplete-divisor");
 const searchButton = document.querySelector(".search-button");
 const gifsResultContainer = document.querySelector(".gifs-result-container");
 const sectionResults = document.querySelector(".results");
+
+const input = document.querySelector(".input-search");
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -68,7 +69,7 @@ input.addEventListener("input", () => {
             li.textContent = result[index];
             ulAutocomplete.appendChild(li);
             li.addEventListener("click", (e) => {
-                input.value = result[index];
+                input.value = e.target.textContent;
                 search(e); //Search clicking on autocomplete suggestions
             })
         }
@@ -76,36 +77,64 @@ input.addEventListener("input", () => {
     );
 });
 
-searchButton.addEventListener("click", (e) => {search(e)}); // Search clicking on search buttton
+searchButton.addEventListener("click", (e) => {search(e)}); // Search clicking on search button
 input.addEventListener("keyup", (e) => {
+    const inputButtonNav = document.querySelector('.menu .input-search');
+    const searchButtonNav = document.querySelector('.menu .search-button');
+    inputButtonNav.value = input.value;
+    searchButtonNav.classList.remove("search-button-close");
     if (e.key == "Enter") { 
         search(e);
         input.blur();
     } 
 });
 
+setTimeout( () => { 
+    const searchButtonNav = document.querySelector('.menu .search-button');
+    const inputButtonNav = document.querySelector('.menu .input-search'); 
+
+    searchButtonNav.addEventListener("click", (e) => {search(e)}); // Search clicking on search button
+    inputButtonNav.addEventListener("input", () => {
+
+        searchButtonNav.classList.remove("search-button-close");
+        searchButton.classList.remove("search-button-close");
+        if (night_mode) searchButtonNav.id = 'icon-search';
+        input.value = inputButtonNav.value; 
+    })
+}, 100);
+
 let pages = 0;
 const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
-    
+
+    let inputValue = (e.target.localName == 'li') ? e.target.textContent : e.target.value; // Stores the input value of any input or text content for li autocomplete
+    if (!inputValue) inputValue = input.value; // If there is not a value, ur clicking on search button then use the setted input.value
+
     checkBox.checked = false;
     let classesLength = e.target.classList.length;
     let fClass = classesLength == 1 ? e.target.classList[0] : 
                  classesLength == 2 ? e.target.classList[1] : // To avoid searching by clicking on the close icon
                  e.target.tagName;
-    h2SearchedTerm.textContent = input.value.capitalize() || view ; // View is the variable setted when you click on the navbar menu
+    h2SearchedTerm.textContent = inputValue.capitalize() || view ; // View is the variable setted when you click on the navbar menu
     searchButton.classList.add("search-button-close"); // Change icon to close icon
-    if (night_mode) iconSearch.id = 'icon-close';
+    if (screen.width > 1023) {
+        const searchButtonNav = document.querySelector('.menu .search-button');
+        const inputButtonNav = document.querySelector('.menu .input-search'); 
+        searchButtonNav.classList.add("search-button-close");
+        inputButtonNav.value = inputValue;
+        input.value = inputValue;
+    }
+    // if (night_mode) iconSearch.id = 'icon-close';
     paginationContainer.removeAttribute('id');
-
+    console.log(fClass)
     switch (fClass) {
         case "trend-suggestion":
         case "search-button":
         case "li-autocomplete":
         case "input-search":
             offset = 0;
-            fetchSearch(input.value, offset).then( (result) => {
+            fetchSearch( inputValue , offset).then( (result) => {
                 let empty = result.empty;
                 removeAllChildNodes(gifsResultContainer);
                 if ( empty ) {
@@ -115,8 +144,7 @@ function search(e) {
                     graphResults(result.gifArray);
                     pages = result.pages;
                     pagination(1);
-                }
-                
+                }      
             });
             displaySearch();
             break;
@@ -137,9 +165,15 @@ function search(e) {
 
 function resetSearch () {
     searchButton.classList.remove("search-button-close");
+    if (screen.width > 1023) {
+        const searchButtonNav = document.querySelector('.menu .search-button'); 
+        const inputButtonNav = document.querySelector('.menu .input-search'); 
+        searchButtonNav.classList.remove("search-button-close");
+        inputButtonNav.value = "";
+    }
     if (night_mode) iconSearch.id = 'icon-search';
     sectionResults.classList.remove("d-inline-block");
-    input.value = ""
+    input.value = "";
 }
 
 function displaySearch () {
