@@ -58,6 +58,9 @@ function applyNight() {
     resultsSection.classList.add('night');
     footer.classList.add('night');
 
+    paginationNext.classList.add('night');
+    paginationPrev.classList.add('night');
+
     newGif.id = 'icon-new-gif';
 }
 
@@ -71,6 +74,9 @@ function applyDay() {
     selectedSection.classList.remove('night');
     resultsSection.classList.remove('night');
     footer.classList.remove('night');
+
+    paginationNext.classList.remove('night');
+    paginationPrev.classList.remove('night');
 
     newGif.removeAttribute('id');
 }

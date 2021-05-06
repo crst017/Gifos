@@ -110,4 +110,8 @@
 .night .icons-container .ig:hover {
   background-image: url("../assets/icon_instagram_noc.svg");
 }
+
+.pagination span.night:hover {
+  color: white;
+}
 /*# sourceMappingURL=night_mode.css.map */

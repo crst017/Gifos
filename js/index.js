@@ -127,7 +127,6 @@ function search(e) {
     }
     // if (night_mode) iconSearch.id = 'icon-close';
     paginationContainer.removeAttribute('id');
-    console.log(fClass)
     switch (fClass) {
         case "trend-suggestion":
         case "search-button":
@@ -153,6 +152,7 @@ function search(e) {
         case "li-selected":
         case "fa-chevron-left":
         case "fa-chevron-right":
+        case "page":
             fetchSearch(input.value, offset).then( (result) => {
                 replaceResults(result.gifArray);
             });

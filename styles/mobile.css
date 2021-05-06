@@ -52,6 +52,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background-color: white;
 }
 
 nav .logo {
@@ -402,12 +403,12 @@ h3 {
   cursor: pointer;
 }
 
-.pagination span .fas {
+.pagination span.fas {
   color: gray;
   font-size: 1.4rem;
 }
 
-.pagination span .fas:hover {
+.pagination span.fas:hover {
   color: #572EE5;
 }
 

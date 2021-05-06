@@ -1,10 +1,11 @@
-const itemsPagination = document.querySelectorAll(".pagination li");
-const paginationPrev = document.querySelector(".pagination span");
-const paginationNext = document.querySelector(".pagination span:last-child");
+const itemsPagination = document.querySelectorAll(".pagination .page");
+const paginationPrev = document.querySelector(".pagination .fa-chevron-left");
+const paginationNext = document.querySelector(".pagination .fa-chevron-right");
 
 for (const item of itemsPagination) {  
     item.addEventListener("click", (e) => {
 
+        console.log(item.textContent)
         let rPagination = pagination(item.textContent);    
         pageNumber = item.textContent;
         switch (view) {
@@ -15,6 +16,7 @@ for (const item of itemsPagination) {
                 break;
             default:
                 offset = rPagination[0];
+                console.log(offset);
                 search(e); // Search clicking on any pagination number
                 break;
         }
@@ -24,7 +26,7 @@ for (const item of itemsPagination) {
 paginationPrev.addEventListener ("click" , (e) => { 
     
     for (const item of itemsPagination) {   
-        if (item.classList != 0)  pageNumber = item.textContent; // assigns the clicked number
+        if (item.classList[1])  pageNumber = item.textContent; // assigns the clicked number
     }
     if (pageNumber != 1) {
         let rPagination = pagination(pageNumber - 1); 
@@ -46,7 +48,7 @@ paginationPrev.addEventListener ("click" , (e) => {
 paginationNext.addEventListener ("click" , (e) => {
 
     for (const item of itemsPagination) {   
-        if (item.classList != 0)  {
+        if (item.classList[1])  {
             pageNumber = item.textContent;
         }
     }
@@ -71,6 +73,7 @@ paginationNext.addEventListener ("click" , (e) => {
 let dark = "";
 function pagination(pageNumber) {
     pageNumber = parseInt(pageNumber);
+    console.log(pageNumber, pages)
     let offset = 0;
     dark = night_mode ? "dark-selected" : "";
     if (pageNumber > pages && pages != 0) pageNumber = pages; // It prevents changing to any page that doesn't exist

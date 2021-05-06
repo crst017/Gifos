@@ -54,10 +54,11 @@ nav {
     align-items: center;
     position: relative;
     justify-content: space-between;
-
+    background-color: white;
     .logo {
         position: relative;
         cursor: pointer;
+
 
         img {
             height: 4.9rem;
@@ -371,12 +372,12 @@ h3 {
         height: 3.2rem;
         cursor: pointer;
         
-        .fas {
+        &.fas {
             color: gray;
             font-size: 1.4rem;
         }
     
-        .fas:hover {
+        &.fas:hover {
             color: $purple
         }
     }  
