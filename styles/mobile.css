@@ -163,7 +163,7 @@ h1 {
   margin: 0 auto 31px;
 }
 
-h1 span {
+.gifos {
   color: #50E3C2;
 }
 
@@ -670,5 +670,9 @@ footer .icons-container .ig:hover {
 
 #empty .empty-my-gifs {
   background-image: url("../assets/icon-mis-gifos-sin-contenido.svg");
+}
+
+.display-none {
+  display: none;
 }
 /*# sourceMappingURL=mobile.css.map */

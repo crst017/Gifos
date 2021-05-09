@@ -3,6 +3,7 @@ const searchSection = document.querySelector('.search');
 const selectedSection = document.querySelector('.selected');
 const trendingSection = document.querySelector('.trending');
 const resultsSection = document.querySelector('.results');
+const sectionNewGif = document.querySelector('.create-gif')
 const gifosLogo = document.querySelector('.logo span');
 const searchContainer = document.querySelector('.search-container');
 const iconSearch = document.querySelector('.search-button');

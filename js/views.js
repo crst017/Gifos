@@ -3,6 +3,8 @@ const searchBlock = document.querySelector(".search-block");
 const results = document.querySelector(".results");
 const resultsDivisor = document.querySelector('.results-divisor');
 const checkBox = document.querySelector('.checkbox');
+const main = document.querySelector('main');
+const h1 = document.querySelector('h1');
 
 let view;
 // let gifsPages = [];
@@ -13,13 +15,13 @@ const logo = document.querySelector('.logo');
 logo.addEventListener( "click" , (e) => { displayFavorites(e) });
 
 function displayFavorites (e) {
-
+    
     checkBox.checked = false; //Close menu automatically
-    view = e.target.textContent || "GIFOS";
+    view = e.target.classList[0] == "new-gif" ? "Nuevo GIF" : e.target.textContent || "GIFOS";
     h2SearchedTerm.textContent = view;
     // paginationContainer.id = 'pagination-hide'; //Dont use pagination
+    showMain();
     resetSearch();
-
     switch (view) {
         case "Favoritos":
             removeAllChildNodes(gifsResultContainer);
@@ -29,6 +31,10 @@ function displayFavorites (e) {
         case "Mis GIFOS":
             removeAllChildNodes(gifsResultContainer);
             displayGifs( view , "my-gif-icon" , "fav-gif-icon" ); // Just graphics 
+            break;
+        case "Nuevo GIF":
+            removeAllChildNodes(gifsResultContainer);
+            hideMain();
             break;
         case "GIFOS":
             goHome();
@@ -44,8 +50,9 @@ function displayFavorites (e) {
 function displayGifs( view , addClass , removeClass ) {
 
     const span = document.querySelector('.section-image');
+    h1.classList.add('display-none');
     h2SearchedTerm.textContent = view;
-    searchBlock.id = "search-block-hide";
+    searchBlock.classList.add('display-none');
     results.classList.add('d-inline-block');
     span.classList.remove(`${removeClass}`);
     span.classList.add(`${addClass}`);
@@ -91,7 +98,7 @@ function displayFavEmpty() {
 }
 
 function goHome() {
-    searchBlock.removeAttribute('id');
+    searchBlock.classList.remove('display-none');
     results.classList.remove('d-inline-block');
     const span = document.querySelector('.results .section-image');
     span.removeAttribute('class');
@@ -144,4 +151,18 @@ function createGifsPages( localStorageGifs ) {
         gifPagesArray.push(gifPage); // Creates an array, each position is a 12 Gifs page
     }
     return gifPagesArray;
+}
+
+function hideMain() {
+
+    searchSection.classList.add('display-none');
+    trendingSection.classList.add('display-none');
+    sectionNewGif.classList.add('display-flex');
+}
+
+function showMain() {
+    
+    searchSection.classList.remove('display-none');
+    trendingSection.classList.remove('display-none');
+    sectionNewGif.classList.remove('display-flex');
 }

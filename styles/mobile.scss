@@ -156,10 +156,10 @@ h1 {
     font-size: 2.5rem;
     width: 76%;
     margin: 0 auto 31px;
+}
 
-    span {
-        color: $green;
-    }
+.gifos {
+    color: $green;
 }
 
 h2 {
@@ -623,6 +623,10 @@ footer {
     .empty-my-gifs {
         background-image: url('../assets/icon-mis-gifos-sin-contenido.svg');
     }
+}
+
+.display-none {
+    display: none;
 }
 
 
