@@ -58,8 +58,6 @@ function displayGifs( view , addClass , removeClass ) {
     span.classList.add(`${addClass}`);
 }
 
-
-
 function searchFavorites() {
 
     let localStorageGifs = [];
@@ -71,7 +69,7 @@ function searchFavorites() {
         try { gif = JSON.parse(gif) } 
         catch (error) { gif = null }
         
-        if (gif.src) localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage, avoids including the night mode key
+        if (gif.from == "search") localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage, avoids including the night mode key
     }
    
     if ( localStorageGifs.length == 0) {

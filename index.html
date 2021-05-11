@@ -98,8 +98,8 @@
         <section class="create-gif">
             <div class="border">
                 <div class="frame">
-                    <h2>Aquí podrás<br>crear tus propios <span class="gifos">GIFOS</span></h2>
-                    <p>¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+                    <h2 class="create-gif-title">Aquí podrás<br>crear tus propios <span class="gifos">GIFOS</span></h2>
+                    <p class="create-gif-text">¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -112,14 +112,24 @@
                 <div class="movie">
                     <img src="./assets/pelicula.svg" alt="">
                 </div>
+                <video src="./assets/icon-busqueda-sin-resultado.svg"></video>
+                <div class="video-card">
+                    <span class="loading"></span>
+                    <p class="upload-text">Estamos subiendo tu GIFO</p>
+                    <div class="buttons">
+                        <a class="download-button"></a>
+                        <a class="link-button"></a>
+                    </div>
+                </div>
             </div>
             <div class="steps">
                 <span>1</span>
                 <span>2</span>
                 <span>3</span>
+                <p class="timer"></p>
             </div>
             <span class="divisor"></span>
-            <button class="record">GRABAR</button>
+            <button class="record">COMENZAR</button>
         </section>
     </main>
     <footer>
@@ -139,6 +149,8 @@
     <script src="./js/night_mode.js"></script>
     <script src="./js/card_mouseover.js"></script>
     <script src="./js/sticky_navbar.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="./js/new_gif.js"></script>
 </body>
 </html>
 

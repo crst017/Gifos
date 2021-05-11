@@ -52,7 +52,8 @@ function displayFav (event) {
     selected.classList.add("display-selected"); 
     document.body.classList.add("display-selected"); 
 
-    configureDownload( event.target.gif ); 
+    const downloadButton = document.querySelector(".selected .download-button");
+    configureDownload( event.target.gif , downloadButton ); 
 }
 
 function gifInLocalStorage( gifID , favButton ) {
@@ -107,14 +108,13 @@ closeSelected.addEventListener("click", () => {
     navbar.classList.remove('hide'); // Shows the sticky navbar once the expanded GIF is closed.
 });
 
-async function configureDownload( gifObject ) {
+async function configureDownload( gifObject , button ) {
     
-    const downloadButton = document.querySelector(".selected .download-button");
     const gifFetch = await fetch( gifObject.downloadSrc );
     const file = await gifFetch.blob();
 
-    downloadButton.download = `${gifObject.title}_${gifObject.id}`;
+    button.download = `${gifObject.title}_${gifObject.id}`;
     urlBlob = URL.createObjectURL( file );
 
-    downloadButton.href = urlBlob;
+    button.href = urlBlob;
 }

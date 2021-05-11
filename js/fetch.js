@@ -6,13 +6,16 @@ String.prototype.capitalize = function() {
 }
 
 class Gif {  
-    constructor( title, username, id, src, downloadSrc) {
+    constructor( title, username, id , height, width, src, downloadSrc, from) {
       this.title = title;
       this.username = username;
       this.id = id;
       this.src = src;
       this.downloadSrc = downloadSrc;
+      this.height = height;
+      this.width = width;
       this.status = false;
+      this.from = from || "search";
     }
 }
 
@@ -70,14 +73,23 @@ async function gifArray ( url , input ) {
 
     for (const gif of gifs) {
         
-        let title = gif.title ? gif.title.capitalize().split(" GIF",1)[0] : input;
-        let username = gif.user && gif.user.display_name ? gif.user.display_name :
-                                            gif.username ? gif.username          : "No Username";
-        let id = gif.id;
-        let src = gif.images.original.webp;
-        let downloadSrc = gif.images.original.url;
-        let newGif = new Gif ( title , username , id , src , downloadSrc)
+        let newGif = createGifObject(gif);
         gifArray.push(newGif);
     }
     return { "gifArray" : gifArray , "pages" : pages, "empty" : empty}  
+}
+
+function createGifObject (gif ,from) {
+
+    let title = gif.title ? gif.title.capitalize().split(" GIF",1)[0] : input;
+    let username = gif.user && gif.user.display_name ? gif.user.display_name :
+                                        gif.username ? gif.username          : "No Username";
+    let id = gif.id;
+    let src = gif.images.original.url;
+    let downloadSrc = gif.images.original.url;
+    let height = gif.images.original.height;
+    let width = gif.images.original.width;
+    let newGif = new Gif ( title , username , id , height , width , src , downloadSrc , from)
+
+    return newGif
 }
