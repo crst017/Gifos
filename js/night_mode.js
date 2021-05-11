@@ -57,6 +57,7 @@ function applyNight() {
     trendingSection.classList.add('night');
     selectedSection.classList.add('night');
     resultsSection.classList.add('night');
+    sectionNewGif.classList.add('night');
     footer.classList.add('night');
 
     paginationNext.classList.add('night');
@@ -74,6 +75,7 @@ function applyDay() {
     trendingSection.classList.remove('night');
     selectedSection.classList.remove('night');
     resultsSection.classList.remove('night');
+    sectionNewGif.classList.remove('night');
     footer.classList.remove('night');
 
     paginationNext.classList.remove('night');

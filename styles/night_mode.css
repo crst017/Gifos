@@ -111,6 +111,47 @@
   background-image: url("../assets/icon_instagram_noc.svg");
 }
 
+.night .border {
+  border-color: white;
+}
+
+.night .border .create-gif-text {
+  color: white;
+}
+
+.night .border .movie {
+  background-image: url("../assets/pelicula-modo-noc.svg");
+}
+
+.night .camera .camera-img {
+  background-image: url("../assets/camara-modo-noc.svg");
+}
+
+.night .steps > span {
+  color: white;
+  border-color: white;
+}
+
+.night .steps > span.selected {
+  color: black;
+  background-color: white;
+}
+
+.night .divisor {
+  background-color: white;
+}
+
+.night .record {
+  color: white;
+  background-color: inherit;
+  border-color: white;
+}
+
+.night .record:hover {
+  color: black;
+  background-color: white;
+}
+
 .pagination span.night:hover {
   color: white;
 }

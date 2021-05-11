@@ -34,7 +34,7 @@ function displayFavorites (e) {
             break;
         case "Nuevo GIF":
             removeAllChildNodes(gifsResultContainer);
-            hideMain();
+            hideMain(); // Also displays the new-gif container
             break;
         case "GIFOS":
             goHome();
