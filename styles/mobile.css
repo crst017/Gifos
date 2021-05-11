@@ -299,6 +299,7 @@ h3 {
 .results .section-image {
   width: 2.4rem;
   height: 2.4rem;
+  margin-bottom: 20px;
   display: none;
 }
 
@@ -673,6 +674,10 @@ footer .icons-container .ig:hover {
 }
 
 .display-none {
+  display: none;
+}
+
+.create-gif {
   display: none;
 }
 /*# sourceMappingURL=mobile.css.map */

@@ -19,17 +19,17 @@ function displayFavorites (e) {
     checkBox.checked = false; //Close menu automatically
     view = e.target.classList[0] == "new-gif" ? "Nuevo GIF" : e.target.textContent || "GIFOS";
     h2SearchedTerm.textContent = view;
-    // paginationContainer.id = 'pagination-hide'; //Dont use pagination
     showMain();
     resetSearch();
     switch (view) {
         case "Favoritos":
             removeAllChildNodes(gifsResultContainer);
-            searchFavorites();
+            searchInLocalStorage("search");
             displayGifs( view , "fav-gif-icon" , "my-gif-icon" ); // Just graphics 
             break;
         case "Mis GIFOS":
             removeAllChildNodes(gifsResultContainer);
+            searchInLocalStorage("upload");
             displayGifs( view , "my-gif-icon" , "fav-gif-icon" ); // Just graphics 
             break;
         case "Nuevo GIF":
@@ -58,7 +58,7 @@ function displayGifs( view , addClass , removeClass ) {
     span.classList.add(`${addClass}`);
 }
 
-function searchFavorites() {
+function searchInLocalStorage(searchFrom) {
 
     let localStorageGifs = [];
     for (let index = 0; index < localStorage.length; index++) {
@@ -69,12 +69,13 @@ function searchFavorites() {
         try { gif = JSON.parse(gif) } 
         catch (error) { gif = null }
         
-        if (gif.from == "search") localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage, avoids including the night mode key
+        if (gif.from == searchFrom) localStorageGifs.push(gif); // LocalStorageGifs stores all the gifs in the LocalStorage, avoids including the night mode key
     }
    
-    if ( localStorageGifs.length == 0) {
-        displayFavEmpty()
-    } else {
+    if ( localStorageGifs.length == 0) { searchFrom == "search" ? displayFavEmpty() : displayGifosEmpty() } 
+    else {
+        gifsResultContainer.removeAttribute('id');
+        paginationContainer.removeAttribute('id');
         pages = Math.ceil( localStorageGifs.length / 12); // Sets the global variable pages for pagination
         gifsPages = createGifsPages( localStorageGifs , 1); // Creates an array, each position is a 12 Gifs page
         pagination(1);
@@ -91,8 +92,25 @@ function displayFavEmpty() {
     gifsResultContainer.appendChild(span);
 
     h2 = document.createElement('h2');
-    h2.textContent = "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
+    h2.innerHTML = "¡Guarda tu primer GIFO en Favoritos <br> para que se muestre aquí!";
     gifsResultContainer.appendChild(h2);
+
+    paginationContainer.id = 'pagination-hide';
+}
+
+function displayGifosEmpty() {
+
+    gifsResultContainer.id = 'empty';
+    const span = document.createElement('span');
+    span.removeAttribute('class'); //Clears any class in order to display the correct image
+    span.classList.add('empty-my-gifs');
+    gifsResultContainer.appendChild(span);
+
+    h2 = document.createElement('h2');
+    h2.innerHTML = "¡Anímate a crear tu primer GIFO!";
+    gifsResultContainer.appendChild(h2);
+
+    paginationContainer.id = 'pagination-hide';
 }
 
 function goHome() {
@@ -101,6 +119,7 @@ function goHome() {
     const span = document.querySelector('.results .section-image');
     span.removeAttribute('class');
     span.classList.add('section-image');
+    h1.classList.remove('display-none');
 }
 
 function createGifsElement ( gifPage , actualPage ) {

@@ -288,6 +288,7 @@ h3 {
     .section-image {
         width: 2.4rem;
         height: 2.4rem;
+        margin-bottom: 20px;
         display: none;
         @extend %bg-icons;
     }
@@ -629,6 +630,9 @@ footer {
     display: none;
 }
 
+.create-gif {
+    display: none;
+}
 
 
 

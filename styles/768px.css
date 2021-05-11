@@ -76,7 +76,7 @@ nav .logo span {
   display: none;
 }
 
-.search {
+.search h1 {
   padding-top: 70px;
 }
 
@@ -150,7 +150,7 @@ nav .logo span {
 }
 
 .results h2 {
-  padding-bottom: 60px;
+  padding-bottom: 70px;
 }
 
 .pagination {
