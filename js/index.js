@@ -108,9 +108,8 @@ const paginationContainer = document.querySelector('.pagination');
 
 function search(e) {   
 
-    let inputValue = (e.target.localName == 'li') ? e.target.textContent : e.target.value; // Stores the input value of any input or text content for li autocomplete
+    let inputValue = (e.target.classList[0] == 'li-autocomplete') ? e.target.textContent : e.target.value; // Stores the input value of any input or text content for li autocomplete
     if (!inputValue) inputValue = input.value; // If there is not a value, ur clicking on search button then use the setted input.value
-
     checkBox.checked = false;
     let classesLength = e.target.classList.length;
     let fClass = classesLength == 1 ? e.target.classList[0] : 
@@ -125,7 +124,6 @@ function search(e) {
         inputButtonNav.value = inputValue;
         input.value = inputValue;
     }
-    // if (night_mode) iconSearch.id = 'icon-close';
     paginationContainer.removeAttribute('id');
     switch (fClass) {
         case "trend-suggestion":

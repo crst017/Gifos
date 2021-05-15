@@ -5,7 +5,6 @@ const paginationNext = document.querySelector(".pagination .fa-chevron-right");
 for (const item of itemsPagination) {  
     item.addEventListener("click", (e) => {
 
-        console.log(item.textContent)
         let rPagination = pagination(item.textContent);    
         pageNumber = item.textContent;
         switch (view) {
@@ -16,7 +15,6 @@ for (const item of itemsPagination) {
                 break;
             default:
                 offset = rPagination[0];
-                console.log(offset);
                 search(e); // Search clicking on any pagination number
                 break;
         }
@@ -73,7 +71,6 @@ paginationNext.addEventListener ("click" , (e) => {
 let dark = "";
 function pagination(pageNumber) {
     pageNumber = parseInt(pageNumber);
-    console.log(pageNumber, pages)
     let offset = 0;
     dark = night_mode ? "dark-selected" : "";
     if (pageNumber > pages && pages != 0) pageNumber = pages; // It prevents changing to any page that doesn't exist
