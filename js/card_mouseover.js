@@ -88,7 +88,7 @@ function displayFavDesktop( img ) {
     let favButton = document.querySelector(".selected .fav-button");
     favButton.classList.remove("fav-button-selected");
     let gifID = img.gif.id;
-
+    let dButton = document.querySelector(".selected .download-button");
     // // Looks if the selected gif is in the localStorage, returns a true or a false
     // // The statusGif is set to indicate if whenever the fav button is clicked it must be setted or removed into LocalStorage, used in changeGifStatus
     statusGif = gifInLocalStorage( gifID , favButton );
@@ -97,7 +97,7 @@ function displayFavDesktop( img ) {
     document.body.classList.add("display-selected"); 
 
     navbar.classList.add('hide');
-    configureDownload( gifSelected );
+    configureDownload( gifSelected , dButton);
 }
 
 
